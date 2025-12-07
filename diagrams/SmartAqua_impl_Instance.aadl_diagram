@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="2208fc11-eec2-4181-8a6f-412f776cc5b3" manual="true">
+    <element uuid="0fd58cae-24a1-4122-8304-d7b3a5e74157" manual="true">
+      <element uuid="e0dd79b8-dc16-445a-b43a-5739966ad6d2" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="150.7057285308838" y="10.0"/>
+      </element>
+      <element uuid="8b845213-ca6e-444e-9dd8-412ce867534b" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>steruj</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Air</seg>
+      </bo>
+      <position x="732.7760801315308" y="128.0"/>
+      <size width="233.1158847808838" height="60.0"/>
+    </element>
+    <element uuid="f7dd7229-7d0e-4b4b-a682-6b8822a445b7" manual="true">
+      <element uuid="e65b7dc1-80ec-4353-8a53-7ea113f5fed7" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="161.82551956176758" y="10.0"/>
+      </element>
+      <element uuid="695733e9-3f81-476d-8232-58abb20f991e" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>otworz</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>CO2</seg>
+      </bo>
+      <position x="727.2161846160889" y="562.0"/>
+      <size width="244.23567581176758" height="60.0"/>
+    </element>
+    <element uuid="cd453e67-95e9-4bb3-9a87-9da58bd4fdd8" manual="true">
+      <element uuid="a1570270-5e68-46ba-b9c7-bd464d4eb77c" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position y="60.0"/>
+      </element>
+      <element uuid="e2084091-e11f-4875-a86d-cc28b7c17334" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>in_tryb</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Display</seg>
+      </bo>
+      <position x="1218.3087158203125" y="133.28571428571433"/>
+      <size width="260.5377616882324" height="110.0"/>
+    </element>
+    <element uuid="960ea701-2f66-4b9b-99b9-f0e6e969a807" manual="true">
+      <element uuid="57ba5895-2ca2-47ff-a1dc-4e263a9757b1" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="212.9583282470703" y="10.0"/>
+      </element>
+      <element uuid="d80bf4c9-81c3-4659-9524-a4396206793c" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>steruj</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Dolewka_RO</seg>
+      </bo>
+      <position x="701.6497802734375" y="662.0"/>
+      <size width="295.3684844970703" height="60.0"/>
+    </element>
+    <element uuid="6e98026d-fde0-488e-88f3-c1dd31107913" manual="true">
+      <element uuid="c854c73c-dc04-42cf-a174-432d3b2d795b" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="174.4296875" y="10.0"/>
+      </element>
+      <element uuid="ea943ef3-eb69-4a70-9e3a-cd60f0755cae" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>steruj</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Heater</seg>
+      </bo>
+      <position x="720.9141006469727" y="288.0"/>
+      <size width="256.83984375" height="60.0"/>
+    </element>
+    <element uuid="d3029f91-1b98-421d-aebc-336d2b241823" manual="true">
+      <element uuid="5e27695a-6f25-470c-9d9c-8e8d3a28a763" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position y="60.0"/>
+      </element>
+      <element uuid="1f3e8882-ebc7-4656-b661-93f3e78f2789" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>steruj</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>LED</seg>
+      </bo>
+      <position x="1218.3087158203125" y="263.28571428571433"/>
+      <size width="242.7578125" height="110.0"/>
+    </element>
+    <element uuid="c07ad0c4-5abb-4ff7-9198-ce380fc2877f" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Main_Bus</seg>
+      </bo>
+      <position x="1067.018310546875" y="271.0"/>
+      <size width="111.29035949707031" height="230.0"/>
+    </element>
+    <element uuid="8a1b58c6-991c-4fdb-aec7-2c18ca7afed8" manual="true">
+      <element uuid="27e82c86-52d2-44fd-9687-3d819e23d8f1" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Main_RAM</seg>
+      </bo>
+      <position x="1218.3087158203125" y="393.28571428571433"/>
+      <size width="282.76432037353516" height="60.0"/>
+    </element>
+    <element uuid="efd11c16-e98c-431b-b113-34b931babca2" manual="true">
+      <element uuid="fc3bb349-e05b-4ed8-b961-b21960004da3" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="171.45442581176758" y="10.0"/>
+      </element>
+      <element uuid="61c37f37-30c5-4d27-87e4-a77382b42ca2" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>steruj</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Makro</seg>
+      </bo>
+      <position x="722.4017314910889" y="482.0"/>
+      <size width="253.86458206176758" height="60.0"/>
+    </element>
+    <element uuid="5eefb94b-4338-440c-9c13-1eb28e6d67d4" manual="true">
+      <element uuid="26685eb0-20d3-4656-9da0-ec661bd73009" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="167.00130081176758" y="10.0"/>
+      </element>
+      <element uuid="0cea6efe-f782-41f9-9b11-4d590ca593d2" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>steruj</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Mikro</seg>
+      </bo>
+      <position x="724.6282939910889" y="402.0"/>
+      <size width="249.41145706176758" height="60.0"/>
+    </element>
+    <element uuid="4de39f46-83a7-4db9-999b-f11b696f9e81" manual="true">
+      <element uuid="0518068b-f15d-4b19-8eda-913875e2b332" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>alarm_in</seg>
+        </bo>
+        <position y="251.66666666666669"/>
+      </element>
+      <element uuid="59827566-1ede-45b6-9e09-2a5c04f96259" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="232.25521850585938" y="110.0"/>
+      </element>
+      <element uuid="c8733b97-673c-48e2-af31-a4bf5ea7372c" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>grzalka_out</seg>
+        </bo>
+        <position x="233.73308563232422" y="260.0"/>
+      </element>
+      <element uuid="019dade8-e345-43f5-bc20-d1579b04827e" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>led_out</seg>
+        </bo>
+        <position x="258.92189025878906" y="60.0"/>
+      </element>
+      <element uuid="0c0b0a69-dd8a-4d93-95ec-e62d7a3e9dbf" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>napowietrzacz_out</seg>
+        </bo>
+        <position x="191.4869842529297" y="160.0"/>
+      </element>
+      <element uuid="94bf9706-0c5a-4f48-8a29-6bc5f93e988e" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>pompa_out</seg>
+        </bo>
+        <position x="235.9466323852539" y="210.0"/>
+      </element>
+      <element uuid="03401904-f7dd-42d0-98d6-99bd80ccfa49" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_dzienny_in</seg>
+        </bo>
+        <position y="193.33333333333334"/>
+      </element>
+      <element uuid="68aae163-28dd-4e32-b9ae-e34bce2b8967" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_karmienie_in</seg>
+        </bo>
+        <position y="18.333333333333336"/>
+      </element>
+      <element uuid="5667a411-3255-4e45-9db9-898fca05e028" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_nocny_in</seg>
+        </bo>
+        <position y="76.66666666666667"/>
+      </element>
+      <element uuid="f5cc2cd8-e523-40fa-b548-2a3f0ba505e2" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_out</seg>
+        </bo>
+        <position x="254.48829650878906" y="10.0"/>
+      </element>
+      <element uuid="20d338eb-622b-4048-8736-01a15e265eeb" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_serwis_in</seg>
+        </bo>
+        <position y="135.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>P1</seg>
+      </bo>
+      <position x="346.984375" y="38.0"/>
+      <size width="314.6653747558594" height="310.0"/>
+    </element>
+    <element uuid="c8cad9e3-359f-42da-9542-2a1908f5434e" manual="true">
+      <element uuid="1f9f4b6d-b9fc-4ea6-ae66-bbd68c15f676" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>alarm_out</seg>
+        </bo>
+        <position y="210.0"/>
+      </element>
+      <element uuid="9d71c860-d08b-4437-84c7-9cb97611db57" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="208.53126525878906" y="160.0"/>
+      </element>
+      <element uuid="4f18015f-a334-4bb0-b2c1-c33b4a9763cb" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>co2_out</seg>
+        </bo>
+        <position x="231.49351119995117" y="110.0"/>
+      </element>
+      <element uuid="1b80b853-7b6d-4233-9e5e-a802b0f4bc32" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>dolewka_out</seg>
+        </bo>
+        <position x="204.0716323852539" y="210.0"/>
+      </element>
+      <element uuid="852e9a91-0157-4400-82c2-0143b766f774" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>doz_makro_out</seg>
+        </bo>
+        <position x="187.0338592529297" y="60.0"/>
+      </element>
+      <element uuid="85091b27-3150-45f7-802e-69cab974ae53" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>doz_mikro_out</seg>
+        </bo>
+        <position x="191.48699188232422" y="10.0"/>
+      </element>
+      <element uuid="cad13792-947c-4bff-9048-ccc51a3a820a" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>ph_in</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <element uuid="9e377c8e-df68-4d23-989a-299659368df0" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>poziom_wody_in</seg>
+        </bo>
+        <position y="110.0"/>
+      </element>
+      <element uuid="bb00ade5-4fc6-40ba-9b0f-6032f87c9fb7" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>temp_in</seg>
+        </bo>
+        <position y="60.0"/>
+      </element>
+      <element uuid="3720d475-ff4a-4fb2-ae12-e3220a89ded8" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>twardosc_in</seg>
+        </bo>
+        <position y="160.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>P2</seg>
+      </bo>
+      <position x="360.16434902615015" y="462.0"/>
+      <size width="290.94142150878906" height="260.0"/>
+    </element>
+    <element uuid="cd1839b9-3529-40db-a5d0-e02487f778a1" manual="true">
+      <element uuid="25f240bb-cd0e-426e-a791-bd661c289664" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="202.5742301940918" y="210.0"/>
+      </element>
+      <element uuid="194c4a36-5e57-40fb-af12-a5d5a2f44b73" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_dzienny</seg>
+        </bo>
+        <position x="197.38543319702148" y="160.0"/>
+      </element>
+      <element uuid="131ba06d-c645-44f9-81a5-3a94d4698306" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_karmienie</seg>
+        </bo>
+        <position x="185.54297256469727" y="10.0"/>
+      </element>
+      <element uuid="468dea84-2dcf-4f07-a530-c78ba67f698b" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_nocny</seg>
+        </bo>
+        <position x="207.76303482055664" y="60.0"/>
+      </element>
+      <element uuid="3e641720-cf60-4d0c-9e24-97b9723a44b5" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>tryb_serwis</seg>
+        </bo>
+        <position x="205.5625114440918" y="110.0"/>
+      </element>
+      <element uuid="59a24ced-89b6-4006-b975-595a30e047d0" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>ustaw_ph</seg>
+        </bo>
+        <position y="160.0"/>
+      </element>
+      <element uuid="6e0979ba-80c2-4dc6-9396-1740e6b5427d" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>ustaw_temp</seg>
+        </bo>
+        <position y="60.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Panel</seg>
+      </bo>
+      <position x="12.0" y="127.0"/>
+      <size width="284.9843864440918" height="260.0"/>
+    </element>
+    <element uuid="76d1a6d4-5c44-4d77-b98e-dea8b1a6c9f1" manual="true">
+      <element uuid="492bf6c6-c3a0-427a-926e-7d89b3d0303d" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="169.24088287353516" y="10.0"/>
+      </element>
+      <element uuid="5c562f88-23db-4f76-a878-2a314584d6c7" manual="true" dockArea="left">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>steruj</seg>
+        </bo>
+        <position y="10.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Pump</seg>
+      </bo>
+      <position x="723.5085029602051" y="208.0"/>
+      <size width="251.65103912353516" height="60.0"/>
+    </element>
+    <element uuid="3725bf81-69f7-4d62-9b7a-48fd6800df2d" manual="true">
+      <element uuid="feb7866f-25a4-4f66-9260-1c3988436d7c" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>bus_access</seg>
+        </bo>
+        <position x="183.32291793823242" y="10.0"/>
+      </element>
+      <element uuid="cf4b5ede-34b9-4cfa-8b34-8e1d7f10b1b9" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>ph</seg>
+        </bo>
+        <position x="238.90234565734863" y="60.0"/>
+      </element>
+      <element uuid="25b2e3fa-072c-4808-bb6f-369ac5601181" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>poziom</seg>
+        </bo>
+        <position x="210.75130462646484" y="160.0"/>
+      </element>
+      <element uuid="15b719aa-64b2-4263-82d8-60ae0c1b056a" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>temp</seg>
+        </bo>
+        <position x="224.09114837646484" y="110.0"/>
+      </element>
+      <element uuid="45c899df-34c8-491d-835f-b4e70ccbfebf" manual="true" dockArea="right">
+        <bo>
+          <seg>org.osate.ge.diagrams.instance</seg>
+          <seg>feature_instance</seg>
+          <seg>twardosc</seg>
+        </bo>
+        <position x="200.38021087646484" y="210.0"/>
+      </element>
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>component_instance</seg>
+        <seg>Sensors</seg>
+      </bo>
+      <position x="31.251312255859375" y="412.0"/>
+      <size width="265.7330741882324" height="260.0"/>
+    </element>
+    <element uuid="b9d65280-3df4-4e44-b328-314ada5381e1" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_air : SmartAqua_impl_Instance.Air.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1027.018310546875" y="170.0"/>
+        <point x="1027.018310546875" y="311.0"/>
+        <point x="1063.018310546875" y="311.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="38ca4f89-48a7-457b-8fbd-e699fb290484" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_air : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Air.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="301.0"/>
+        <point x="1027.018310546875" y="301.0"/>
+        <point x="1027.018310546875" y="170.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="c3119f82-973a-496b-ab63-4d758eaa8714" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_co2 : SmartAqua_impl_Instance.CO2.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1027.018310546875" y="604.0"/>
+        <point x="1027.018310546875" y="451.0"/>
+        <point x="1063.018310546875" y="451.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="4eef8da1-8255-4cd9-88d3-b23bf0e8a551" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_co2 : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.CO2.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="441.0"/>
+        <point x="1027.018310546875" y="441.0"/>
+        <point x="1027.018310546875" y="604.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="b9c2755d-f764-479e-b5a2-4a5d7f03c404" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_disp : SmartAqua_impl_Instance.Display.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1188.3087158203125" y="225.2857208251953"/>
+        <point x="1188.3087158203125" y="336.71429443359375"/>
+        <point x="1182.3087158203125" y="336.71429443359375"/>
+      </bendpoints>
+    </element>
+    <element uuid="119747b3-c5f5-4d66-94fc-6f976678ba87" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_disp : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Display.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1182.3087158203125" y="303.8571472167969"/>
+        <point x="1188.3087158203125" y="303.8571472167969"/>
+        <point x="1188.3087158203125" y="225.2857208251953"/>
+      </bendpoints>
+    </element>
+    <element uuid="88a5d302-db4e-4bb7-bc39-641cb5b75858" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_dolewka : SmartAqua_impl_Instance.Dolewka_RO.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1057.018310546875" y="704.0"/>
+        <point x="1057.018310546875" y="491.0"/>
+        <point x="1063.018310546875" y="491.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="19899413-5e36-4f9d-9312-6436e5fa1b0f" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_dolewka : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Dolewka_RO.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="481.0"/>
+        <point x="1057.018310546875" y="481.0"/>
+        <point x="1057.018310546875" y="704.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="5ca2595f-5e5d-4843-8c23-4b66c9b46205" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_heater : SmartAqua_impl_Instance.Heater.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1007.0182495117188" y="330.0"/>
+        <point x="1007.0182495117188" y="351.0"/>
+        <point x="1063.018310546875" y="351.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="c6b1cf86-dccc-4ec8-97fc-082d8aaa7e74" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_heater : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Heater.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="341.0"/>
+        <point x="1007.0182495117188" y="341.0"/>
+        <point x="1007.0182495117188" y="330.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="74d55aaa-5640-47ad-825a-0908959d9399" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_led : SmartAqua_impl_Instance.LED.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1188.3087158203125" y="355.2857360839844"/>
+        <point x="1188.3087158203125" y="402.4285583496094"/>
+        <point x="1182.3087158203125" y="402.4285583496094"/>
+      </bendpoints>
+    </element>
+    <element uuid="9512699e-05b9-49d2-b044-201f05fc2ed3" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_led : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.LED.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1182.3087158203125" y="369.5714416503906"/>
+        <point x="1188.3087158203125" y="369.5714416503906"/>
+        <point x="1188.3087158203125" y="355.2857360839844"/>
+      </bendpoints>
+    </element>
+    <element uuid="9a11942e-39dc-4350-bf6b-451b519550b2" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_makro : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Makro.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="431.0"/>
+        <point x="1017.0182495117188" y="431.0"/>
+        <point x="1017.0182495117188" y="524.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="1b5ac989-9825-49c7-8c07-36984422c262" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_makro : SmartAqua_impl_Instance.Makro.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1017.0182495117188" y="524.0"/>
+        <point x="1017.0182495117188" y="421.0"/>
+        <point x="1063.018310546875" y="421.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="74212eb6-bf15-40ba-8698-d72cb6014548" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_mikro : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Mikro.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="411.0"/>
+        <point x="1007.0182495117188" y="411.0"/>
+        <point x="1007.0182495117188" y="444.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="270a3765-0700-4ef3-bec2-631be7ecdae0" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_mikro : SmartAqua_impl_Instance.Mikro.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1007.0182495117188" y="444.0"/>
+        <point x="1007.0182495117188" y="401.0"/>
+        <point x="1063.018310546875" y="401.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="15ead84d-a785-40f6-9444-c8a62b018f22" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_p1 : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.P1.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="291.0"/>
+        <point x="1037.018310546875" y="291.0"/>
+        <point x="1037.018310546875" y="117.0"/>
+        <point x="681.6497802734375" y="117.0"/>
+        <point x="681.6497802734375" y="180.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="a3c6562b-441a-4603-a8e2-9a3fbc1162d5" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_p1 : SmartAqua_impl_Instance.P1.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="681.6497802734375" y="180.0"/>
+        <point x="681.6497802734375" y="106.0"/>
+        <point x="1047.018310546875" y="106.0"/>
+        <point x="1047.018310546875" y="281.0"/>
+        <point x="1063.018310546875" y="281.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="20ba281f-b32d-436c-bb5b-c423f4be7cc6" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_p2 : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.P2.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="471.0"/>
+        <point x="1047.018310546875" y="471.0"/>
+        <point x="1047.018310546875" y="651.0"/>
+        <point x="671.6497802734375" y="651.0"/>
+        <point x="671.6497802734375" y="654.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="83a8c769-e271-49e0-9a7f-f5726c2ded37" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_p2 : SmartAqua_impl_Instance.P2.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="671.6497802734375" y="654.0"/>
+        <point x="671.6497802734375" y="640.0"/>
+        <point x="1037.018310546875" y="640.0"/>
+        <point x="1037.018310546875" y="461.0"/>
+        <point x="1063.018310546875" y="461.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="f18d3193-acb2-4ab8-9fa7-686e82c0010e" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_panel : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Panel.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="371.0"/>
+        <point x="1007.0182495117188" y="371.0"/>
+        <point x="1007.0182495117188" y="369.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="bd66e64b-9333-4113-8e5e-8a058da52942" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_panel : SmartAqua_impl_Instance.Panel.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="306.984375" y="369.0"/>
+        <point x="306.984375" y="358.0"/>
+        <point x="1007.0182495117188" y="358.0"/>
+        <point x="1007.0182495117188" y="361.0"/>
+        <point x="1063.018310546875" y="361.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="48797211-2945-4c39-938c-5df7479827a2" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_pump : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Pump.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="321.0"/>
+        <point x="1017.0182495117188" y="321.0"/>
+        <point x="1017.0182495117188" y="250.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="679e168d-fb8c-4996-be63-767f87028d77" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_pump : SmartAqua_impl_Instance.Pump.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1017.0182495117188" y="250.0"/>
+        <point x="1017.0182495117188" y="331.0"/>
+        <point x="1063.018310546875" y="331.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="ce7a026e-9973-4ecc-a172-f926a919d97a" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_ram : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Main_RAM.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1178.3087158203125" y="435.28570556640625"/>
+      </bendpoints>
+    </element>
+    <element uuid="4136febf-2a59-40df-9d89-485f38e2c0d2" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_ram : SmartAqua_impl_Instance.Main_RAM.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="1188.3087158203125" y="435.28570556640625"/>
+        <point x="1188.3087158203125" y="468.1428527832031"/>
+        <point x="1182.3087158203125" y="468.1428527832031"/>
+      </bendpoints>
+    </element>
+    <element uuid="8cbab0bc-2fd2-4fff-ac14-d04de86b9113" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_sens : SmartAqua_impl_Instance.Main_Bus -> SmartAqua_impl_Instance.Sensors.bus_access</seg>
+      </bo>
+      <bendpoints>
+        <point x="1063.018310546875" y="391.0"/>
+        <point x="306.984375" y="391.0"/>
+        <point x="306.984375" y="454.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="d74097ef-7df9-4b92-9753-dcd9bee2c835" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>bus_sens : SmartAqua_impl_Instance.Sensors.bus_access -> SmartAqua_impl_Instance.Main_Bus</seg>
+      </bo>
+      <bendpoints>
+        <point x="306.984375" y="454.0"/>
+        <point x="306.984375" y="380.0"/>
+        <point x="1007.0182495117188" y="380.0"/>
+        <point x="1007.0182495117188" y="381.0"/>
+        <point x="1063.018310546875" y="381.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="1cd9470c-156d-49fa-b469-000108002d15" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c1 : SmartAqua_impl_Instance.Panel.tryb_dzienny -> SmartAqua_impl_Instance.P1.tryb_dzienny_in</seg>
+      </bo>
+      <bendpoints>
+        <point x="336.984375" y="319.0"/>
+        <point x="336.984375" y="263.3333435058594"/>
+      </bendpoints>
+    </element>
+    <element uuid="0b336aad-f6b9-42dc-b779-13106abde0e4" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c10 : SmartAqua_impl_Instance.P2.doz_mikro_out -> SmartAqua_impl_Instance.Mikro.steruj</seg>
+      </bo>
+      <bendpoints>
+        <point x="671.6497192382812" y="504.0"/>
+        <point x="671.6497192382812" y="444.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="d68705af-5f99-421d-a136-998ba8ebffab" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c11 : SmartAqua_impl_Instance.P2.doz_makro_out -> SmartAqua_impl_Instance.Makro.steruj</seg>
+      </bo>
+      <bendpoints>
+        <point x="671.6497192382812" y="554.0"/>
+        <point x="671.6497192382812" y="524.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="b0c165b8-7aad-424b-a61a-fe3f47f8f77e" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c12 : SmartAqua_impl_Instance.P2.dolewka_out -> SmartAqua_impl_Instance.Dolewka_RO.steruj</seg>
+      </bo>
+    </element>
+    <element uuid="0467a6e8-3ba0-4b3c-ace2-06f057c7f85a" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c2 : SmartAqua_impl_Instance.Panel.tryb_nocny -> SmartAqua_impl_Instance.P1.tryb_nocny_in</seg>
+      </bo>
+      <bendpoints>
+        <point x="316.984375" y="219.0"/>
+        <point x="316.984375" y="146.6666717529297"/>
+      </bendpoints>
+    </element>
+    <element uuid="2698ed70-9337-46fc-9e35-ecdc556a49e9" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c3 : SmartAqua_impl_Instance.Panel.tryb_karmienie -> SmartAqua_impl_Instance.P1.tryb_karmienie_in</seg>
+      </bo>
+      <bendpoints>
+        <point x="306.984375" y="169.0"/>
+        <point x="306.984375" y="88.33333587646484"/>
+      </bendpoints>
+    </element>
+    <element uuid="e3972020-50bb-4775-b623-562b6e74bafb" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c4 : SmartAqua_impl_Instance.Panel.tryb_serwis -> SmartAqua_impl_Instance.P1.tryb_serwis_in</seg>
+      </bo>
+      <bendpoints>
+        <point x="326.984375" y="269.0"/>
+        <point x="326.984375" y="205.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="319d9395-ed30-40ae-b381-bc43d8f21389" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c5 : SmartAqua_impl_Instance.P1.led_out -> SmartAqua_impl_Instance.LED.steruj</seg>
+      </bo>
+      <bendpoints>
+        <point x="671.6497802734375" y="130.0"/>
+        <point x="671.6497802734375" y="95.0"/>
+        <point x="1198.3087158203125" y="95.0"/>
+        <point x="1198.3087158203125" y="305.28570556640625"/>
+      </bendpoints>
+    </element>
+    <element uuid="9e0b4998-b791-4ac0-ad2e-4e4e76a799d4" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c6 : SmartAqua_impl_Instance.P1.grzalka_out -> SmartAqua_impl_Instance.Heater.steruj</seg>
+      </bo>
+    </element>
+    <element uuid="26748cf3-7a95-4b22-b83a-9e9f4599a6c0" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c7 : SmartAqua_impl_Instance.P1.pompa_out -> SmartAqua_impl_Instance.Pump.steruj</seg>
+      </bo>
+      <bendpoints>
+        <point x="671.6497802734375" y="280.0"/>
+        <point x="671.6497802734375" y="250.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="2713d65f-2e33-435d-9cbf-a370c1f27cd5" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c8 : SmartAqua_impl_Instance.P1.napowietrzacz_out -> SmartAqua_impl_Instance.Air.steruj</seg>
+      </bo>
+      <bendpoints>
+        <point x="691.6497802734375" y="230.0"/>
+        <point x="691.6497802734375" y="170.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="46295901-ca55-4c0b-9174-12d15e78b9fd" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>c9 : SmartAqua_impl_Instance.P2.co2_out -> SmartAqua_impl_Instance.CO2.otworz</seg>
+      </bo>
+    </element>
+    <element uuid="83fdd1a3-05d3-4a11-8f05-7ec305f61213" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>d1 : SmartAqua_impl_Instance.P1.tryb_out -> SmartAqua_impl_Instance.Display.in_tryb</seg>
+      </bo>
+      <bendpoints>
+        <point x="1208.3087158203125" y="80.0"/>
+        <point x="1208.3087158203125" y="175.2857208251953"/>
+      </bendpoints>
+    </element>
+    <element uuid="f25b1a11-011d-418f-a885-4daa7fdb7b8d" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>s1 : SmartAqua_impl_Instance.Sensors.temp -> SmartAqua_impl_Instance.P2.temp_in</seg>
+      </bo>
+    </element>
+    <element uuid="253286fb-9ba7-405a-8d30-3eb8f9263389" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>s2 : SmartAqua_impl_Instance.Sensors.ph -> SmartAqua_impl_Instance.P2.ph_in</seg>
+      </bo>
+    </element>
+    <element uuid="af46e9e7-9dae-4078-acda-84af4c0653fa" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>s3 : SmartAqua_impl_Instance.Sensors.poziom -> SmartAqua_impl_Instance.P2.poziom_wody_in</seg>
+      </bo>
+    </element>
+    <element uuid="cb641d9d-2675-4a6f-9f35-0c37f36fbea8" manual="true">
+      <bo>
+        <seg>org.osate.ge.diagrams.instance</seg>
+        <seg>connection_reference</seg>
+        <seg>s4 : SmartAqua_impl_Instance.Sensors.twardosc -> SmartAqua_impl_Instance.P2.twardosc_in</seg>
+      </bo>
+    </element>
+    <bo>
+      <seg>org.osate.ge.diagrams.instance</seg>
+      <seg>system_instance</seg>
+      <seg>/akwarium/instances/aquarium_smartaqua_impl_instance.aaxl2</seg>
+    </bo>
+    <position/>
+    <size width="1513.072998046875" height="734.0"/>
+  </element>
+  <config type="structure" connectionPrimaryLabelsVisible="false">
+    <enabledAadlProperties/>
+    <context>
+      <seg>org.osate.ge.diagrams.instance</seg>
+      <seg>system_instance</seg>
+      <seg>/akwarium/instances/aquarium_smartaqua_impl_instance.aaxl2</seg>
+    </context>
+  </config>
+</diagram:Diagram>

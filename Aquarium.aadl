@@ -1,4 +1,218 @@
 package Aquarium
 public
-	
+  with Base_Types;
+
+  ---------- 1. DEFINICJE SPRZĘTU (HARDWARE) ----------
+
+  -- Magistrala danych
+  bus Magistrala_Danych
+  end Magistrala_Danych;
+
+  memory Pamiec_RAM
+  features
+    bus_access: requires bus access Magistrala_Danych;
+  end Pamiec_RAM;
+
+  -- Procesor 1 (Steruje urządzeniami akwarium)
+  processor AquaController_P1
+  features
+    bus_access: requires bus access Magistrala_Danych;
+
+    -- Wejścia z panelu użytkownika
+    tryb_dzienny_in: in event port;
+    tryb_nocny_in: in event port;
+    tryb_karmienie_in: in event port;
+    tryb_serwis_in: in event port;
+    alarm_in: in event port;
+
+    -- Wyjścia sterujące
+    led_out: out event port;
+    grzalka_out: out event port;
+    pompa_out: out event port;
+    napowietrzacz_out: out event port;
+
+    -- Dane do panelu informacyjnego
+    tryb_out: out data port Base_Types::String;
+  end AquaController_P1;
+
+  -- Procesor 2 (Monitoruje parametry i steruje środowiskiem)
+  processor AquaMonitor_P2
+  features
+    bus_access: requires bus access Magistrala_Danych;
+
+    -- Wejścia z czujników
+    temp_in: in data port Base_Types::Integer;
+    ph_in: in data port Base_Types::Float;
+    poziom_wody_in: in data port Base_Types::Integer;
+    twardosc_in: in data port Base_Types::Integer;
+
+    -- Wyjścia sterujące
+    co2_out: out event port;
+    doz_mikro_out: out event port;
+    doz_makro_out: out event port;
+    dolewka_out: out event port;
+
+    alarm_out: out event port;
+  end AquaMonitor_P2;
+
+  ---------- 2. DEFINICJE URZĄDZEŃ (DEVICES) ----------
+
+  -- Panel użytkownika
+  device AquaPanel
+  features
+    tryb_dzienny: out event port;
+    tryb_nocny: out event port;
+    tryb_karmienie: out event port;
+    tryb_serwis: out event port;
+
+    ustaw_temp: out data port Base_Types::Integer;
+    ustaw_ph: out data port Base_Types::Float;
+
+    bus_access: requires bus access Magistrala_Danych;
+  end AquaPanel;
+
+  -- Panel informacyjny
+  device AquaDisplay
+  features
+    in_tryb: in data port Base_Types::String;
+    bus_access: requires bus access Magistrala_Danych;
+  end AquaDisplay;
+
+  -- Urządzenia wykonawcze
+  device Oswietlenie_LED
+  features
+    steruj: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Oswietlenie_LED;
+
+  device Grzalka
+  features
+    steruj: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Grzalka;
+
+  device Pompa_Obiegowa
+  features
+    steruj: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Pompa_Obiegowa;
+
+  device Napowietrzacz
+  features
+    steruj: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Napowietrzacz;
+
+  -- Zestaw czujników
+  device Czujniki
+  features
+    temp: out data port Base_Types::Integer;
+    ph: out data port Base_Types::Float;
+    poziom: out data port Base_Types::Integer;
+    twardosc: out data port Base_Types::Integer;
+
+    bus_access: requires bus access Magistrala_Danych;
+  end Czujniki;
+
+  -- Moduły chemii i środowiska
+  device Zbiornik_CO2
+  features
+    otworz: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Zbiornik_CO2;
+
+  device Dozownik_Mikro
+  features
+    steruj: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Dozownik_Mikro;
+
+  device Dozownik_Makro
+  features
+    steruj: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Dozownik_Makro;
+
+  device Dolewka
+  features
+    steruj: in event port;
+    bus_access: requires bus access Magistrala_Danych;
+  end Dolewka;
+
+  ---------- 3. IMPLEMENTACJA SYSTEMU ----------
+
+  system SmartAqua
+  end SmartAqua;
+
+  system implementation SmartAqua.impl
+  subcomponents
+    Main_Bus: bus Magistrala_Danych;
+    Main_RAM: memory Pamiec_RAM;
+
+    P1: processor AquaController_P1;
+    P2: processor AquaMonitor_P2;
+
+    Panel: device AquaPanel;
+    Display: device AquaDisplay;
+
+    LED: device Oswietlenie_LED;
+    Heater: device Grzalka;
+    Pump: device Pompa_Obiegowa;
+    Air: device Napowietrzacz;
+
+    Sensors: device Czujniki;
+
+    CO2: device Zbiornik_CO2;
+    Mikro: device Dozownik_Mikro;
+    Makro: device Dozownik_Makro;
+    Dolewka_RO: device Dolewka;
+
+  connections
+    -- Panel -> P1
+    c1: port Panel.tryb_dzienny -> P1.tryb_dzienny_in;
+    c2: port Panel.tryb_nocny -> P1.tryb_nocny_in;
+    c3: port Panel.tryb_karmienie -> P1.tryb_karmienie_in;
+    c4: port Panel.tryb_serwis -> P1.tryb_serwis_in;
+
+    -- Czujniki -> P2
+    s1: port Sensors.temp -> P2.temp_in;
+    s2: port Sensors.ph -> P2.ph_in;
+    s3: port Sensors.poziom -> P2.poziom_wody_in;
+    s4: port Sensors.twardosc -> P2.twardosc_in;
+
+    -- P1 -> urządzenia
+    c5: port P1.led_out -> LED.steruj;
+    c6: port P1.grzalka_out -> Heater.steruj;
+    c7: port P1.pompa_out -> Pump.steruj;
+    c8: port P1.napowietrzacz_out -> Air.steruj;
+
+    -- P2 -> środowisko
+    c9: port P2.co2_out -> CO2.otworz;
+    c10: port P2.doz_mikro_out -> Mikro.steruj;
+    c11: port P2.doz_makro_out -> Makro.steruj;
+    c12: port P2.dolewka_out -> Dolewka_RO.steruj;
+
+    -- P1 -> Display
+    d1: port P1.tryb_out -> Display.in_tryb;
+
+    -- Magistrala
+    bus_ram: bus access Main_Bus <-> Main_RAM.bus_access;
+    bus_p1: bus access Main_Bus <-> P1.bus_access;
+    bus_p2: bus access Main_Bus <-> P2.bus_access;
+    bus_panel: bus access Main_Bus <-> Panel.bus_access;
+    bus_disp: bus access Main_Bus <-> Display.bus_access;
+
+    bus_led: bus access Main_Bus <-> LED.bus_access;
+    bus_heater: bus access Main_Bus <-> Heater.bus_access;
+    bus_pump: bus access Main_Bus <-> Pump.bus_access;
+    bus_air: bus access Main_Bus <-> Air.bus_access;
+
+    bus_sens: bus access Main_Bus <-> Sensors.bus_access;
+
+    bus_co2: bus access Main_Bus <-> CO2.bus_access;
+    bus_mikro: bus access Main_Bus <-> Mikro.bus_access;
+    bus_makro: bus access Main_Bus <-> Makro.bus_access;
+    bus_dolewka: bus access Main_Bus <-> Dolewka_RO.bus_access;
+
+  end SmartAqua.impl;
 end Aquarium;

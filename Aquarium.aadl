@@ -1,10 +1,10 @@
 package Aquarium
 public
-  with Base_Types;
 
-  ---------- 1. DEFINICJE SPRZĘTU (HARDWARE) ----------
+  -- Definicja Sygnału, Magistrali i RAMu
+  data Sygnal
+  end Sygnal;
 
-  -- Magistrala danych
   bus Magistrala_Danych
   end Magistrala_Danych;
 
@@ -13,206 +13,503 @@ public
     bus_access: requires bus access Magistrala_Danych;
   end Pamiec_RAM;
 
-  -- Procesor 1 (Steruje urządzeniami akwarium)
-  processor AquaController_P1
-  features
-    bus_access: requires bus access Magistrala_Danych;
+--========== PROCESORY ==========--
+  -- Procesor 1: Przetwarza sygnały z panelu UI i wysyła dane do wyświetlaczy
+  processor Procesor_Glowny_Panel
+    features
+      -- Wejścia: sygnały z przycisków panelu UI
+      in_tryb_dzienny: in data port Sygnal;
+      in_tryb_nocny: in data port Sygnal;
+      in_nakarm: in data port Sygnal;
+--      in_alarm: in data port Sygnal;
+      
+      -- Wejścia: dane z czujników do wyświetlenia
+      in_temperatura: in data port Sygnal;
+      in_poziom_wody: in data port Sygnal;
+      in_tlen: in data port Sygnal;
+      in_jasnosc: in data port Sygnal;
+      in_ph: in data port Sygnal;
 
-    -- Wejścia z panelu użytkownika
-    tryb_dzienny_in: in event port;
-    tryb_nocny_in: in event port;
-    tryb_karmienie_in: in event port;
-    tryb_serwis_in: in event port;
-    alarm_in: in event port;
+      -- Wyjścia: informacje do wyświetlaczy
+      out_aktualny_tryb: out data port Sygnal;
+      out_status: out data port Sygnal;
+      out_wartosci_czujnikow: out data port Sygnal;
+      bus_access: requires bus access Magistrala_Danych;
+  end Procesor_Glowny_Panel;
 
-    -- Wyjścia sterujące
-    led_out: out event port;
-    grzalka_out: out event port;
-    pompa_out: out event port;
-    napowietrzacz_out: out event port;
+  -- Procesor 2: Odbiera dane z czujników i sygnały trybu, steruje urządzeniami na ich podstawie
+  processor Procesor_Glowny_Urzadzenia
+    features
+      -- Wejścia: sygnały wyboru trybu z panelu
+      in_tryb_dzienny: in data port Sygnal;
+      in_tryb_nocny: in data port Sygnal;
+      in_nakarm: in data port Sygnal;
+      in_alarm: in data port Sygnal;
+      
+      -- Wejścia: odczyty z czujników
+      in_temperatura: in data port Sygnal;
+      in_poziom_wody: in data port Sygnal;
+      in_tlen: in data port Sygnal;
+      in_jasnosc: in data port Sygnal;
+      in_ph: in data port Sygnal;
+      
+      -- Wyjścia: sygnały sterujące bezpośrednio do urządzeń wykonawczych
+      out_sterowanie_led: out data port Sygnal;
+      out_sterowanie_led_nocne: out data port Sygnal;
+      out_sterowanie_grzalka: out data port Sygnal;
+      out_sterowanie_pompa: out data port Sygnal;
+      out_sterowanie_co2: out data port Sygnal;
+      out_sterowanie_karmnik: out data port Sygnal;
+      out_sterowanie_alarm: out data port Sygnal;
+      
+      bus_access: requires bus access Magistrala_Danych;
+  end Procesor_Glowny_Urzadzenia;
 
-    -- Dane do panelu informacyjnego
-    tryb_out: out data port Base_Types::String;
-  end AquaController_P1;
+--========== PODSYSTEM 1 - PANEL INTERFEJSU UŻYTKOWNIKA ==========--
+-- Zintegrowany panel z przyciskami sterującymi i wyświetlaczami informacyjnymi
 
-  -- Procesor 2 (Monitoruje parametry i steruje środowiskiem)
-  processor AquaMonitor_P2
-  features
-    bus_access: requires bus access Magistrala_Danych;
+  -- Urządzenie: Przycisk do wyboru trybu (dzienny/nocny)
+  device Przycisk_Trybu
+    features
+      wyjscie: out data port Sygnal;  -- Sygnał wyjściowy przy naciśnięciu
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Przycisk_Trybu;
 
-    -- Wejścia z czujników
-    temp_in: in data port Base_Types::Integer;
-    ph_in: in data port Base_Types::Float;
-    poziom_wody_in: in data port Base_Types::Integer;
-    twardosc_in: in data port Base_Types::Integer;
+  -- Urządzenie: Przycisk karmienia
+  device Przycisk_Karmienia
+    features
+      wyjscie: out data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Przycisk_Karmienia;
 
-    -- Wyjścia sterujące
-    co2_out: out event port;
-    doz_mikro_out: out event port;
-    doz_makro_out: out event port;
-    dolewka_out: out event port;
+  -- Urządzenie: Przycisk alarmu do sygnalizowania problemów
+  device Przycisk_Alarm
+    features
+      wyjscie: out data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Przycisk_Alarm;
 
-    alarm_out: out event port;
-  end AquaMonitor_P2;
+  -- Urządzenie wyświetlające informacje użytkownikowi
+  device Wyswietlacz
+    features
+      wejscie: in data port Sygnal;  -- Odbiera dane do wyświetlenia
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Wyswietlacz;
 
-  ---------- 2. DEFINICJE URZĄDZEŃ (DEVICES) ----------
+  -- Wątek przetwarzający sygnały w cyklu okresowym co 100ms
+  thread Watek_Sygnalu
+    features
+      wejscie: in data port Sygnal;  -- Odbiera surowy sygnał
+      wyjscie: out data port Sygnal;  -- Wysyła przetworzony sygnał
+    properties
+      Dispatch_Protocol => Periodic;  -- Uruchamiany cyklicznie
+      Period => 100 ms;  -- Co 100 milisekund
+      Compute_Execution_Time => 2 ms .. 5 ms;  -- Czas przetwarzania 2-5ms
+      Deadline => 100 ms;  -- Musi zakończyć się w ciągu 100ms
+  end Watek_Sygnalu;
 
-  -- Panel użytkownika
-  device AquaPanel
-  features
-    tryb_dzienny: out event port;
-    tryb_nocny: out event port;
-    tryb_karmienie: out event port;
-    tryb_serwis: out event port;
+  -- Proces zarządzający wszystkimi sygnałami z przycisków
+  process Proces_Przyciskow
+    features
+      -- Wejścia od urządzeń (przycisków)
+      in_dzienny: in data port Sygnal;
+      in_nocny: in data port Sygnal;
+      in_nakarm: in data port Sygnal;
+      in_alarm: in data port Sygnal;
 
-    ustaw_temp: out data port Base_Types::Integer;
-    ustaw_ph: out data port Base_Types::Float;
+      -- Wyjścia przetworzone przez wątki
+      out_dzienny: out data port Sygnal;
+      out_nocny: out data port Sygnal;
+      out_nakarm: out data port Sygnal;
+      out_alarm: out data port Sygnal;
+  end Proces_Przyciskow;
 
-    bus_access: requires bus access Magistrala_Danych;
-  end AquaPanel;
+  -- Implementacja procesu: 4 wątki, każdy obsługuje jeden przycisk
+  process implementation Proces_Przyciskow.impl
+    subcomponents
+      sygnal_Tryb_Dzienny: thread Watek_Sygnalu;  -- Wątek dla trybu dziennego
+      sygnal_Tryb_Nocny: thread Watek_Sygnalu;    -- Wątek dla trybu nocnego
+      sygnal_Nakarm: thread Watek_Sygnalu;  -- Wątek dla przycisku karmienia
+      sygnal_Alarm: thread Watek_Sygnalu;  -- Wątek dla przycisku alarmu
+    connections
+      -- Połączenia dla trybu dziennego
+      c1: port in_dzienny -> sygnal_Tryb_Dzienny.wejscie;
+      c2: port sygnal_Tryb_Dzienny.wyjscie -> out_dzienny;
+      -- Połączenia dla trybu nocnego
+      c3: port in_nocny -> sygnal_Tryb_Nocny.wejscie;
+      c4: port sygnal_Tryb_Nocny.wyjscie -> out_nocny;
+      -- Połączenia dla karmienia
+      c5: port in_nakarm -> sygnal_Nakarm.wejscie;
+      c6: port sygnal_Nakarm.wyjscie -> out_nakarm;
+      -- Połączenia dla alarmu
+      c7: port in_alarm -> sygnal_Alarm.wejscie;
+      c8: port sygnal_Alarm.wyjscie -> out_alarm;
+  end Proces_Przyciskow.impl;
 
-  -- Panel informacyjny
-  device AquaDisplay
-  features
-    in_tryb: in data port Base_Types::String;
-    bus_access: requires bus access Magistrala_Danych;
-  end AquaDisplay;
+  -- System panelu UI - łączy przyciski i wyświetlacze w jednym interfejsie użytkownika
+  system Panel_UI
+    features
+      -- Wyjścia od przycisków do systemu głównego
+      out_Tryb_Dzienny: out data port Sygnal;
+      out_Tryb_Nocny: out data port Sygnal;
+      out_Nakarm: out data port Sygnal;
+      out_Alarm: out data port Sygnal;
+      
+      -- Wejścia do wyświetlaczy z systemu głównego
+      in_aktualny_tryb: in data port Sygnal;
+      in_status_systemu: in data port Sygnal;
+      in_wartosci_czujnikow: in data port Sygnal;
+      
+      magistrala_1_dostep: requires bus access Magistrala_Danych;
+  end Panel_UI;
 
-  -- Urządzenia wykonawcze
+  -- Implementacja: łączy 4 przyciski, proces i 3 wyświetlacze
+  system implementation Panel_UI.impl
+    subcomponents
+      -- Urządzenia wejściowe (przyciski)
+      dev_Dzienny: device Przycisk_Trybu;
+      dev_Nocny: device Przycisk_Trybu;
+      dev_Nakarm: device Przycisk_Karmienia;
+      dev_Alarm: device Przycisk_Alarm;
+      
+      -- Urządzenia wyjściowe (wyświetlacze)
+      wysw_Tryb: device Wyswietlacz;  -- Wyświetlacz aktualnego trybu
+      wysw_Status: device Wyswietlacz;  -- Wyświetlacz statusu systemu
+      wysw_Czujniki: device Wyswietlacz;  -- Wyświetlacz wartości z czujników
+      
+      -- Proces przetwarzający sygnały z przycisków
+      proc_Przyciski: process Proces_Przyciskow.impl;
+    connections
+      -- Połączenia przycisków z procesem (wejścia)
+      conn_dz_in: port dev_Dzienny.wyjscie -> proc_Przyciski.in_dzienny;
+      conn_no_in: port dev_Nocny.wyjscie -> proc_Przyciski.in_nocny;
+      conn_ka_in: port dev_Nakarm.wyjscie -> proc_Przyciski.in_nakarm;
+      conn_al_in: port dev_Alarm.wyjscie -> proc_Przyciski.in_alarm;
+      
+      -- Połączenia procesu z wyjściami systemu
+      conn_dz_out: port proc_Przyciski.out_dzienny -> out_Tryb_Dzienny;
+      conn_no_out: port proc_Przyciski.out_nocny -> out_Tryb_Nocny;
+      conn_ka_out: port proc_Przyciski.out_nakarm -> out_Nakarm;
+      conn_al_out: port proc_Przyciski.out_alarm -> out_Alarm;
+      
+      -- Połączenia wejść do wyświetlaczy
+      conn_wysw_tryb: port in_aktualny_tryb -> wysw_Tryb.wejscie;
+      conn_wysw_status: port in_status_systemu -> wysw_Status.wejscie;
+      conn_wysw_czujniki: port in_wartosci_czujnikow -> wysw_Czujniki.wejscie;
+
+      -- Połączenia magistrali danych z urządzeniami
+      bus_conn_dz: bus access magistrala_1_dostep <-> dev_Dzienny.dostep_do_magistrali;
+      bus_conn_no: bus access magistrala_1_dostep <-> dev_Nocny.dostep_do_magistrali;
+      bus_conn_ka: bus access magistrala_1_dostep <-> dev_Nakarm.dostep_do_magistrali;
+      bus_conn_al: bus access magistrala_1_dostep <-> dev_Alarm.dostep_do_magistrali;
+      
+      bus_conn_w1: bus access magistrala_1_dostep <-> wysw_Tryb.dostep_do_magistrali;
+      bus_conn_w2: bus access magistrala_1_dostep <-> wysw_Status.dostep_do_magistrali;
+      bus_conn_w3: bus access magistrala_1_dostep <-> wysw_Czujniki.dostep_do_magistrali;
+  end Panel_UI.impl;
+
+--========== PODSYSTEM 2 - ZESTAW CZUJNIKÓW ==========--
+-- Monitoruje parametry wody w akwarium
+
+  -- Czujnik temperatury wody
+  device Czujnik_Temperatury
+    features
+      odczyt: out data port Sygnal;  -- Aktualna temperatura
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Czujnik_Temperatury;
+
+  -- Czujnik poziomu wody
+  device Czujnik_Poziomu_Wody
+    features
+      odczyt: out data port Sygnal;  -- Aktualny poziom
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Czujnik_Poziomu_Wody;
+
+  -- Czujnik poziomu tlenu w wodzie
+  device Czujnik_Tlenu
+    features
+      odczyt: out data port Sygnal;  -- Stężenie tlenu
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Czujnik_Tlenu;
+
+  -- Czujnik jasności/natężenia światła
+  device Czujnik_Jasnosci
+    features
+      odczyt: out data port Sygnal;  -- Aktualne natężenie światła
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Czujnik_Jasnosci;
+
+  -- Czujnik pH wody (kwasowość/zasadowość)
+  device Czujnik_pH
+    features
+      odczyt: out data port Sygnal;  -- Aktualne pH (skala 0-14)
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Czujnik_pH;
+
+  -- Proces przetwarzający odczyty z czujników
+  process Proces_Czujnikow
+    features
+      -- Wejścia z czujników
+      in_temperatura: in data port Sygnal;
+      in_poziom_wody: in data port Sygnal;
+      in_tlen: in data port Sygnal;
+      in_jasnosc: in data port Sygnal;
+      in_ph: in data port Sygnal;
+      
+      -- Wyjścia przetworzone
+      out_temperatura: out data port Sygnal;
+      out_poziom_wody: out data port Sygnal;
+      out_tlen: out data port Sygnal;
+      out_jasnosc: out data port Sygnal;
+      out_ph: out data port Sygnal;
+  end Proces_Czujnikow;
+
+  -- Implementacja: 5 wątków przetwarzających dane z czujników
+  process implementation Proces_Czujnikow.impl
+    subcomponents
+      sygnal_Temperatura: thread Watek_Sygnalu;
+      sygnal_Poziom: thread Watek_Sygnalu;
+      sygnal_Tlen: thread Watek_Sygnalu;
+      sygnal_Jasnosc: thread Watek_Sygnalu;
+      sygnal_pH: thread Watek_Sygnalu;
+    connections
+      c_in1: port in_temperatura -> sygnal_Temperatura.wejscie;
+      c_in2: port in_poziom_wody -> sygnal_Poziom.wejscie;
+      c_in3: port in_tlen -> sygnal_Tlen.wejscie;
+      c_in4: port in_jasnosc -> sygnal_Jasnosc.wejscie;
+      c_in5: port in_ph -> sygnal_pH.wejscie;
+      
+      c_out1: port sygnal_Temperatura.wyjscie -> out_temperatura;
+      c_out2: port sygnal_Poziom.wyjscie -> out_poziom_wody;
+      c_out3: port sygnal_Tlen.wyjscie -> out_tlen;
+      c_out4: port sygnal_Jasnosc.wyjscie -> out_jasnosc;
+      c_out5: port sygnal_pH.wyjscie -> out_ph;
+  end Proces_Czujnikow.impl;
+
+  -- System zestawu czujników
+  system Zestaw_Czujnikow
+    features
+      -- Wyjścia do procesora głównego
+      out_temperatura: out data port Sygnal;
+      out_poziom_wody: out data port Sygnal;
+      out_tlen: out data port Sygnal;
+      out_jasnosc: out data port Sygnal;
+      out_ph: out data port Sygnal;
+      
+      magistrala_2_dostep: requires bus access Magistrala_Danych;
+  end Zestaw_Czujnikow;
+
+  -- Implementacja: łączy 5 czujników z procesem przetwarzania
+  system implementation Zestaw_Czujnikow.impl
+    subcomponents
+      -- Czujniki fizyczne
+      czuj_Temp: device Czujnik_Temperatury;
+      czuj_Poziom: device Czujnik_Poziomu_Wody;
+      czuj_Tlen: device Czujnik_Tlenu;
+      czuj_Jasnosc: device Czujnik_Jasnosci;
+      czuj_pH: device Czujnik_pH;
+      -- Proces przetwarzający odczyty
+      proc_Czujnikow: process Proces_Czujnikow.impl;
+    connections
+      -- Odczyty z czujników do procesu
+      c_z1: port czuj_Temp.odczyt -> proc_Czujnikow.in_temperatura;
+      c_z2: port czuj_Poziom.odczyt -> proc_Czujnikow.in_poziom_wody;
+      c_z3: port czuj_Tlen.odczyt -> proc_Czujnikow.in_tlen;
+      c_z4: port czuj_Jasnosc.odczyt -> proc_Czujnikow.in_jasnosc;
+      c_z5: port czuj_pH.odczyt -> proc_Czujnikow.in_ph;
+      
+      -- Wyjścia z procesu na zewnątrz systemu
+      c_out1: port proc_Czujnikow.out_temperatura -> out_temperatura;
+      c_out2: port proc_Czujnikow.out_poziom_wody -> out_poziom_wody;
+      c_out3: port proc_Czujnikow.out_tlen -> out_tlen;
+      c_out4: port proc_Czujnikow.out_jasnosc -> out_jasnosc;
+      c_out5: port proc_Czujnikow.out_ph -> out_ph;
+
+      -- Połączenia magistrali z czujnikami
+      bus_czuj1: bus access magistrala_2_dostep <-> czuj_Temp.dostep_do_magistrali;
+      bus_czuj2: bus access magistrala_2_dostep <-> czuj_Poziom.dostep_do_magistrali;
+      bus_czuj3: bus access magistrala_2_dostep <-> czuj_Tlen.dostep_do_magistrali;
+      bus_czuj4: bus access magistrala_2_dostep <-> czuj_Jasnosc.dostep_do_magistrali;
+      bus_czuj5: bus access magistrala_2_dostep <-> czuj_pH.dostep_do_magistrali;
+  end Zestaw_Czujnikow.impl;
+
+--========== PODSYSTEM 3 - URZĄDZENIA WYKONAWCZE ==========--
+-- Fizyczne urządzenia wykonujące ostateczne działania
+
+  -- Urządzenie wykonawcze: Oświetlenie LED główne (dzienne)
   device Oswietlenie_LED
-  features
-    steruj: in event port;
-    bus_access: requires bus access Magistrala_Danych;
+    features
+      sterowanie: in data port Sygnal;  -- Przyjmuje sygnał sterujący
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
   end Oswietlenie_LED;
 
+  -- Urządzenie wykonawcze: Oświetlenie LED nocne (niebieskie, przyciemnione)
+  device Oswietlenie_LED_Nocne
+    features
+      sterowanie: in data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Oswietlenie_LED_Nocne;
+
+  -- Urządzenie wykonawcze: Grzałka do podgrzewania wody
   device Grzalka
-  features
-    steruj: in event port;
-    bus_access: requires bus access Magistrala_Danych;
+    features
+      sterowanie: in data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
   end Grzalka;
 
+  -- Urządzenie wykonawcze: Pompa obiegowa do cyrkulacji wody
   device Pompa_Obiegowa
-  features
-    steruj: in event port;
-    bus_access: requires bus access Magistrala_Danych;
+    features
+      sterowanie: in data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
   end Pompa_Obiegowa;
 
-  device Napowietrzacz
-  features
-    steruj: in event port;
-    bus_access: requires bus access Magistrala_Danych;
-  end Napowietrzacz;
-
-  -- Zestaw czujników
-  device Czujniki
-  features
-    temp: out data port Base_Types::Integer;
-    ph: out data port Base_Types::Float;
-    poziom: out data port Base_Types::Integer;
-    twardosc: out data port Base_Types::Integer;
-
-    bus_access: requires bus access Magistrala_Danych;
-  end Czujniki;
-
-  -- Moduły chemii i środowiska
+  -- Urządzenie wykonawcze: Zbiornik CO2 do nawożenia roślin
   device Zbiornik_CO2
-  features
-    otworz: in event port;
-    bus_access: requires bus access Magistrala_Danych;
+    features
+      sterowanie: in data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
   end Zbiornik_CO2;
 
-  device Dozownik_Mikro
-  features
-    steruj: in event port;
-    bus_access: requires bus access Magistrala_Danych;
-  end Dozownik_Mikro;
+  -- Urządzenie wykonawcze: Automatyczny karmnik dla ryb
+  device Karmnik_Automatyczny
+    features
+      sterowanie: in data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Karmnik_Automatyczny;
 
-  device Dozownik_Makro
-  features
-    steruj: in event port;
-    bus_access: requires bus access Magistrala_Danych;
-  end Dozownik_Makro;
+  -- Urządzenie wykonawcze: Brzęczyk alarmowy
+  device Brzeczyk_Alarmowy
+    features
+      sterowanie: in data port Sygnal;
+      dostep_do_magistrali: requires bus access Magistrala_Danych;
+  end Brzeczyk_Alarmowy;
 
-  device Dolewka
-  features
-    steruj: in event port;
-    bus_access: requires bus access Magistrala_Danych;
-  end Dolewka;
+  -- System urządzeń wykonawczych
+  system Urzadzenia_Wykonawcze
+    features
+      -- Wejścia z procesora 2
+      in_led: in data port Sygnal;
+      in_led_nocne: in data port Sygnal;
+      in_grzalka: in data port Sygnal;
+      in_pompa: in data port Sygnal;
+      in_co2: in data port Sygnal;
+      in_karmnik: in data port Sygnal;
+      in_alarm: in data port Sygnal;
+      
+      magistrala_2_dostep: requires bus access Magistrala_Danych;
+  end Urzadzenia_Wykonawcze;
 
-  ---------- 3. IMPLEMENTACJA SYSTEMU ----------
+  -- Implementacja: bezpośrednie połączenia sygnałów z urządzeniami wykonawczymi
+  system implementation Urzadzenia_Wykonawcze.impl
+    subcomponents
+      dev_LED: device Oswietlenie_LED;
+      dev_LED_Nocne: device Oswietlenie_LED_Nocne;
+      dev_Grzalka: device Grzalka;
+      dev_Pompa: device Pompa_Obiegowa;
+      dev_CO2: device Zbiornik_CO2;
+      dev_Karmnik: device Karmnik_Automatyczny;
+      dev_Brzeczyk: device Brzeczyk_Alarmowy;
+    connections
+      -- Każde urządzenie otrzymuje dedykowany sygnał sterujący
+      c1: port in_led -> dev_LED.sterowanie;
+      c2: port in_led_nocne -> dev_LED_Nocne.sterowanie;
+      c3: port in_grzalka -> dev_Grzalka.sterowanie;
+      c4: port in_pompa -> dev_Pompa.sterowanie;
+      c5: port in_co2 -> dev_CO2.sterowanie;
+      c6: port in_karmnik -> dev_Karmnik.sterowanie;
+      c7: port in_alarm -> dev_Brzeczyk.sterowanie;
+      
+      -- Połączenia magistrali z urządzeniami
+      bus_led: bus access magistrala_2_dostep <-> dev_LED.dostep_do_magistrali;
+      bus_led_nocne: bus access magistrala_2_dostep <-> dev_LED_Nocne.dostep_do_magistrali;
+      bus_grzalka: bus access magistrala_2_dostep <-> dev_Grzalka.dostep_do_magistrali;
+      bus_pompa: bus access magistrala_2_dostep <-> dev_Pompa.dostep_do_magistrali;
+      bus_co2: bus access magistrala_2_dostep <-> dev_CO2.dostep_do_magistrali;
+      bus_karmnik: bus access magistrala_2_dostep <-> dev_Karmnik.dostep_do_magistrali;
+      bus_brzeczyk: bus access magistrala_2_dostep <-> dev_Brzeczyk.dostep_do_magistrali;
+  end Urzadzenia_Wykonawcze.impl;
 
-  system SmartAqua
-  end SmartAqua;
+--========== SYSTEM GŁÓWNY - SMART AQUARIUM ==========--
+-- Integruje wszystkie podsystemy i procesory w kompletny system sterowania akwarium
 
-  system implementation SmartAqua.impl
-  subcomponents
-    Main_Bus: bus Magistrala_Danych;
-    Main_RAM: memory Pamiec_RAM;
+  system Smart_Aquarium
+  end Smart_Aquarium;
 
-    P1: processor AquaController_P1;
-    P2: processor AquaMonitor_P2;
+  -- Pełna implementacja systemu
+  system implementation Smart_Aquarium.impl
+    subcomponents
+      -- 3 podsystemy funkcjonalne
+      Panel_Interfejsu: system Panel_UI.impl;  -- Zintegrowany interfejs użytkownika
+      Zest_Czujnikow: system Zestaw_Czujnikow.impl;  -- Monitorowanie parametrów
+      Urzadz_Wykonawcze: system Urzadzenia_Wykonawcze.impl;  -- Wykonanie działań
 
-    Panel: device AquaPanel;
-    Display: device AquaDisplay;
+      -- 2 magistrale komunikacyjne
+      Magistrala_1: bus Magistrala_Danych;  -- Dla panelu i procesora 1
+      Magistrala_2: bus Magistrala_Danych;  -- Dla czujników, urządzeń i procesora 2
+      
+      -- Pamięć RAM do zapisywania odczytów z czujników
+      RAM: memory Pamiec_RAM;
+      
+      -- 2 procesory sterujące
+      Procesor_1: processor Procesor_Glowny_Panel;  -- Obsługa panelu i wyświetlaczy
+      Procesor_2: processor Procesor_Glowny_Urzadzenia;  -- Analiza czujników i sterowanie urządzeniami
 
-    LED: device Oswietlenie_LED;
-    Heater: device Grzalka;
-    Pump: device Pompa_Obiegowa;
-    Air: device Napowietrzacz;
+    connections
+      -- FAZA 1: Panel UI -> Procesory (wybór trybu pracy i przycisków)
+      c_tryb_dz_p1: port Panel_Interfejsu.out_Tryb_Dzienny -> Procesor_1.in_tryb_dzienny;
+      c_tryb_no_p1: port Panel_Interfejsu.out_Tryb_Nocny -> Procesor_1.in_tryb_nocny;
+      c_nakarm_p1: port Panel_Interfejsu.out_Nakarm -> Procesor_1.in_nakarm;
+--      c_alarm_p1: port Panel_Interfejsu.out_Alarm -> Procesor_1.in_alarm;
 
-    Sensors: device Czujniki;
+      c_tryb_dz_p2: port Panel_Interfejsu.out_Tryb_Dzienny -> Procesor_2.in_tryb_dzienny;
+      c_tryb_no_p2: port Panel_Interfejsu.out_Tryb_Nocny -> Procesor_2.in_tryb_nocny;
+      c_nakarm_p2: port Panel_Interfejsu.out_Nakarm -> Procesor_2.in_nakarm;
+      c_alarm_p2: port Panel_Interfejsu.out_Alarm -> Procesor_2.in_alarm;
+      
+      -- FAZA 2: Zestaw Czujników -> Procesory (monitoring parametrów)
+      c_sens_temp_p1: port Zest_Czujnikow.out_temperatura -> Procesor_1.in_temperatura;
+      c_sens_poz_p1: port Zest_Czujnikow.out_poziom_wody -> Procesor_1.in_poziom_wody;
+      c_sens_tlen_p1: port Zest_Czujnikow.out_tlen -> Procesor_1.in_tlen;
+      c_sens_jasn_p1: port Zest_Czujnikow.out_jasnosc -> Procesor_1.in_jasnosc;
+      c_sens_ph_p1: port Zest_Czujnikow.out_ph -> Procesor_1.in_ph;
 
-    CO2: device Zbiornik_CO2;
-    Mikro: device Dozownik_Mikro;
-    Makro: device Dozownik_Makro;
-    Dolewka_RO: device Dolewka;
+      c_sens_temp_p2: port Zest_Czujnikow.out_temperatura -> Procesor_2.in_temperatura;
+      c_sens_poz_p2: port Zest_Czujnikow.out_poziom_wody -> Procesor_2.in_poziom_wody;
+      c_sens_tlen_p2: port Zest_Czujnikow.out_tlen -> Procesor_2.in_tlen;
+      c_sens_jasn_p2: port Zest_Czujnikow.out_jasnosc -> Procesor_2.in_jasnosc;
+      c_sens_ph_p2: port Zest_Czujnikow.out_ph -> Procesor_2.in_ph;
+      
+      -- FAZA 3: Procesor 1 -> Panel UI (feedback dla użytkownika)
+      c_info_tryb: port Procesor_1.out_aktualny_tryb -> Panel_Interfejsu.in_aktualny_tryb;
+      c_info_status: port Procesor_1.out_status -> Panel_Interfejsu.in_status_systemu;
+      c_info_czujniki: port Procesor_1.out_wartosci_czujnikow -> Panel_Interfejsu.in_wartosci_czujnikow;
 
-  connections
-    -- Panel -> P1
-    c1: port Panel.tryb_dzienny -> P1.tryb_dzienny_in;
-    c2: port Panel.tryb_nocny -> P1.tryb_nocny_in;
-    c3: port Panel.tryb_karmienie -> P1.tryb_karmienie_in;
-    c4: port Panel.tryb_serwis -> P1.tryb_serwis_in;
+      -- FAZA 4: Procesor 2 -> Urządzenia Wykonawcze (sterowanie na podstawie trybu i czujników)
+      c_wyk_led: port Procesor_2.out_sterowanie_led -> Urzadz_Wykonawcze.in_led;
+      c_wyk_led_nocne: port Procesor_2.out_sterowanie_led_nocne -> Urzadz_Wykonawcze.in_led_nocne;
+      c_wyk_grzalka: port Procesor_2.out_sterowanie_grzalka -> Urzadz_Wykonawcze.in_grzalka;
+      c_wyk_pompa: port Procesor_2.out_sterowanie_pompa -> Urzadz_Wykonawcze.in_pompa;
+      c_wyk_co2: port Procesor_2.out_sterowanie_co2 -> Urzadz_Wykonawcze.in_co2;
+      c_wyk_karmnik: port Procesor_2.out_sterowanie_karmnik -> Urzadz_Wykonawcze.in_karmnik;
+      c_wyk_alarm: port Procesor_2.out_sterowanie_alarm -> Urzadz_Wykonawcze.in_alarm;
 
-    -- Czujniki -> P2
-    s1: port Sensors.temp -> P2.temp_in;
-    s2: port Sensors.ph -> P2.ph_in;
-    s3: port Sensors.poziom -> P2.poziom_wody_in;
-    s4: port Sensors.twardosc -> P2.twardosc_in;
+      -- Połączenia magistral z podsystemami
+      b1_acc_panel: bus access Magistrala_1 <-> Panel_Interfejsu.magistrala_1_dostep;
+      b2_acc_czujniki: bus access Magistrala_2 <-> Zest_Czujnikow.magistrala_2_dostep;
+      b2_acc_urzad: bus access Magistrala_2 <-> Urzadz_Wykonawcze.magistrala_2_dostep;
+      
+      -- Połączenia magistral z procesorami
+      b1_acc_p1: bus access Magistrala_1 <-> Procesor_1.bus_access;
+      b2_acc_p2: bus access Magistrala_2 <-> Procesor_2.bus_access;
+      
+      -- Połączenie pamięci RAM z magistralą 2 (do zapisywania odczytów czujników)
+      b2_acc_ram: bus access Magistrala_2 <-> RAM.bus_access;
 
-    -- P1 -> urządzenia
-    c5: port P1.led_out -> LED.steruj;
-    c6: port P1.grzalka_out -> Heater.steruj;
-    c7: port P1.pompa_out -> Pump.steruj;
-    c8: port P1.napowietrzacz_out -> Air.steruj;
+    properties
+      -- Przypisanie procesów do procesorów fizycznych
+      Actual_Processor_Binding => (reference (Procesor_1)) applies to Panel_Interfejsu.proc_Przyciski;
+      Actual_Processor_Binding => (reference (Procesor_2)) applies to Zest_Czujnikow.proc_Czujnikow;
 
-    -- P2 -> środowisko
-    c9: port P2.co2_out -> CO2.otworz;
-    c10: port P2.doz_mikro_out -> Mikro.steruj;
-    c11: port P2.doz_makro_out -> Makro.steruj;
-    c12: port P2.dolewka_out -> Dolewka_RO.steruj;
-
-    -- P1 -> Display
-    d1: port P1.tryb_out -> Display.in_tryb;
-
-    -- Magistrala
-    bus_ram: bus access Main_Bus <-> Main_RAM.bus_access;
-    bus_p1: bus access Main_Bus <-> P1.bus_access;
-    bus_p2: bus access Main_Bus <-> P2.bus_access;
-    bus_panel: bus access Main_Bus <-> Panel.bus_access;
-    bus_disp: bus access Main_Bus <-> Display.bus_access;
-
-    bus_led: bus access Main_Bus <-> LED.bus_access;
-    bus_heater: bus access Main_Bus <-> Heater.bus_access;
-    bus_pump: bus access Main_Bus <-> Pump.bus_access;
-    bus_air: bus access Main_Bus <-> Air.bus_access;
-
-    bus_sens: bus access Main_Bus <-> Sensors.bus_access;
-
-    bus_co2: bus access Main_Bus <-> CO2.bus_access;
-    bus_mikro: bus access Main_Bus <-> Mikro.bus_access;
-    bus_makro: bus access Main_Bus <-> Makro.bus_access;
-    bus_dolewka: bus access Main_Bus <-> Dolewka_RO.bus_access;
-
-  end SmartAqua.impl;
+  end Smart_Aquarium.impl;
 end Aquarium;

@@ -5,7 +5,7 @@
     <context>
       <seg>org.osate.ge.diagrams.instance</seg>
       <seg>system_instance</seg>
-      <seg>/akwarium/instances/aquarium_aquarium_impl_instance.aaxl2</seg>
+      <seg>/akwarium/instances/aquarium_smart_aquarium_impl_instance.aaxl2</seg>
     </context>
   </config>
 </diagram:Diagram>

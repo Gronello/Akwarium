@@ -29,32 +29,29 @@
       <featureInstance name="in_nakarm" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.2"/>
       </featureInstance>
-      <featureInstance name="in_alarm" type="/2">
+      <featureInstance name="in_temperatura" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.3"/>
       </featureInstance>
-      <featureInstance name="in_temperatura" type="/2">
+      <featureInstance name="in_poziom_wody" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.4"/>
       </featureInstance>
-      <featureInstance name="in_poziom_wody" type="/2">
+      <featureInstance name="in_tlen" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.5"/>
       </featureInstance>
-      <featureInstance name="in_tlen" type="/2">
+      <featureInstance name="in_jasnosc" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.6"/>
       </featureInstance>
-      <featureInstance name="in_jasnosc" type="/2">
+      <featureInstance name="in_ph" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.7"/>
       </featureInstance>
-      <featureInstance name="in_ph" type="/2">
+      <featureInstance name="out_aktualny_tryb" direction="out" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.8"/>
       </featureInstance>
-      <featureInstance name="out_aktualny_tryb" direction="out" type="/2">
+      <featureInstance name="out_status" direction="out" type="/2">
         <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.9"/>
       </featureInstance>
-      <featureInstance name="out_status" direction="out" type="/2">
-        <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.10"/>
-      </featureInstance>
       <featureInstance name="out_wartosci_czujnikow" direction="out" type="/2">
-        <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.11"/>
+        <feature xsi:type="aadl2:DataPort" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedDataPort.10"/>
       </featureInstance>
       <featureInstance name="bus_access" category="busAccess" type="/1">
         <feature xsi:type="aadl2:BusAccess" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedBusAccess.0"/>
@@ -1168,8 +1165,8 @@
         <connection xsi:type="aadl2:AccessConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedAccessConnection.6"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Magistrala_1 -> Procesor_1.bus_access" complete="true" kind="accessConnection" destination="/0/@componentInstance.3/@featureInstance.12" source="/0/@componentInstance.0">
-      <connectionReference context="/0" source="/0/@componentInstance.0" destination="/0/@componentInstance.3/@featureInstance.12">
+    <connectionInstance name="Magistrala_1 -> Procesor_1.bus_access" complete="true" kind="accessConnection" destination="/0/@componentInstance.3/@featureInstance.11" source="/0/@componentInstance.0">
+      <connectionReference context="/0" source="/0/@componentInstance.0" destination="/0/@componentInstance.3/@featureInstance.11">
         <connection xsi:type="aadl2:AccessConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedAccessConnection.3"/>
       </connectionReference>
     </connectionInstance>
@@ -1284,38 +1281,38 @@
         <connection xsi:type="aadl2:AccessConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedAccessConnection.5"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Procesor_1.out_aktualny_tryb -> Panel_Interfejsu.wysw_Tryb.wejscie" complete="true" kind="portConnection" destination="/0/@componentInstance.5/@componentInstance.4/@featureInstance.0" source="/0/@componentInstance.3/@featureInstance.9">
-      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.9" destination="/0/@componentInstance.5/@featureInstance.5">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.18"/>
+    <connectionInstance name="Procesor_1.out_aktualny_tryb -> Panel_Interfejsu.wysw_Tryb.wejscie" complete="true" kind="portConnection" destination="/0/@componentInstance.5/@componentInstance.4/@featureInstance.0" source="/0/@componentInstance.3/@featureInstance.8">
+      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.8" destination="/0/@componentInstance.5/@featureInstance.5">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.17"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.5" source="/0/@componentInstance.5/@featureInstance.5" destination="/0/@componentInstance.5/@componentInstance.4/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.8"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Procesor_1.out_status -> Panel_Interfejsu.wysw_Status.wejscie" complete="true" kind="portConnection" destination="/0/@componentInstance.5/@componentInstance.5/@featureInstance.0" source="/0/@componentInstance.3/@featureInstance.10">
-      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.10" destination="/0/@componentInstance.5/@featureInstance.6">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.19"/>
+    <connectionInstance name="Procesor_1.out_status -> Panel_Interfejsu.wysw_Status.wejscie" complete="true" kind="portConnection" destination="/0/@componentInstance.5/@componentInstance.5/@featureInstance.0" source="/0/@componentInstance.3/@featureInstance.9">
+      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.9" destination="/0/@componentInstance.5/@featureInstance.6">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.18"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.5" source="/0/@componentInstance.5/@featureInstance.6" destination="/0/@componentInstance.5/@componentInstance.5/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.9"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Procesor_1.out_wartosci_czujnikow -> Panel_Interfejsu.wysw_Czujniki.wejscie" complete="true" kind="portConnection" destination="/0/@componentInstance.5/@componentInstance.6/@featureInstance.0" source="/0/@componentInstance.3/@featureInstance.11">
-      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.11" destination="/0/@componentInstance.5/@featureInstance.7">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.20"/>
+    <connectionInstance name="Procesor_1.out_wartosci_czujnikow -> Panel_Interfejsu.wysw_Czujniki.wejscie" complete="true" kind="portConnection" destination="/0/@componentInstance.5/@componentInstance.6/@featureInstance.0" source="/0/@componentInstance.3/@featureInstance.10">
+      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.10" destination="/0/@componentInstance.5/@featureInstance.7">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.19"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.5" source="/0/@componentInstance.5/@featureInstance.7" destination="/0/@componentInstance.5/@componentInstance.6/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.10"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Procesor_1.bus_access -> Magistrala_1" complete="true" kind="accessConnection" destination="/0/@componentInstance.0" source="/0/@componentInstance.3/@featureInstance.12">
-      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.12" destination="/0/@componentInstance.0" reverse="true">
+    <connectionInstance name="Procesor_1.bus_access -> Magistrala_1" complete="true" kind="accessConnection" destination="/0/@componentInstance.0" source="/0/@componentInstance.3/@featureInstance.11">
+      <connectionReference context="/0" source="/0/@componentInstance.3/@featureInstance.11" destination="/0/@componentInstance.0" reverse="true">
         <connection xsi:type="aadl2:AccessConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedAccessConnection.3"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Procesor_2.out_sterowanie_led -> Urzadz_Wykonawcze.dev_LED.sterowanie" complete="true" kind="portConnection" destination="/0/@componentInstance.7/@componentInstance.0/@featureInstance.0" source="/0/@componentInstance.4/@featureInstance.9">
       <connectionReference context="/0" source="/0/@componentInstance.4/@featureInstance.9" destination="/0/@componentInstance.7/@featureInstance.1">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.21"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.20"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.7" source="/0/@componentInstance.7/@featureInstance.1" destination="/0/@componentInstance.7/@componentInstance.0/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.0"/>
@@ -1323,7 +1320,7 @@
     </connectionInstance>
     <connectionInstance name="Procesor_2.out_sterowanie_led_nocne -> Urzadz_Wykonawcze.dev_LED_Nocne.sterowanie" complete="true" kind="portConnection" destination="/0/@componentInstance.7/@componentInstance.1/@featureInstance.0" source="/0/@componentInstance.4/@featureInstance.10">
       <connectionReference context="/0" source="/0/@componentInstance.4/@featureInstance.10" destination="/0/@componentInstance.7/@featureInstance.2">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.22"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.21"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.7" source="/0/@componentInstance.7/@featureInstance.2" destination="/0/@componentInstance.7/@componentInstance.1/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.1"/>
@@ -1331,7 +1328,7 @@
     </connectionInstance>
     <connectionInstance name="Procesor_2.out_sterowanie_grzalka -> Urzadz_Wykonawcze.dev_Grzalka.sterowanie" complete="true" kind="portConnection" destination="/0/@componentInstance.7/@componentInstance.2/@featureInstance.0" source="/0/@componentInstance.4/@featureInstance.11">
       <connectionReference context="/0" source="/0/@componentInstance.4/@featureInstance.11" destination="/0/@componentInstance.7/@featureInstance.3">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.23"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.22"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.7" source="/0/@componentInstance.7/@featureInstance.3" destination="/0/@componentInstance.7/@componentInstance.2/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.2"/>
@@ -1339,7 +1336,7 @@
     </connectionInstance>
     <connectionInstance name="Procesor_2.out_sterowanie_pompa -> Urzadz_Wykonawcze.dev_Pompa.sterowanie" complete="true" kind="portConnection" destination="/0/@componentInstance.7/@componentInstance.3/@featureInstance.0" source="/0/@componentInstance.4/@featureInstance.12">
       <connectionReference context="/0" source="/0/@componentInstance.4/@featureInstance.12" destination="/0/@componentInstance.7/@featureInstance.4">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.24"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.23"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.7" source="/0/@componentInstance.7/@featureInstance.4" destination="/0/@componentInstance.7/@componentInstance.3/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.3"/>
@@ -1347,7 +1344,7 @@
     </connectionInstance>
     <connectionInstance name="Procesor_2.out_sterowanie_co2 -> Urzadz_Wykonawcze.dev_CO2.sterowanie" complete="true" kind="portConnection" destination="/0/@componentInstance.7/@componentInstance.4/@featureInstance.0" source="/0/@componentInstance.4/@featureInstance.13">
       <connectionReference context="/0" source="/0/@componentInstance.4/@featureInstance.13" destination="/0/@componentInstance.7/@featureInstance.5">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.25"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.24"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.7" source="/0/@componentInstance.7/@featureInstance.5" destination="/0/@componentInstance.7/@componentInstance.4/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.4"/>
@@ -1355,7 +1352,7 @@
     </connectionInstance>
     <connectionInstance name="Procesor_2.out_sterowanie_karmnik -> Urzadz_Wykonawcze.dev_Karmnik.sterowanie" complete="true" kind="portConnection" destination="/0/@componentInstance.7/@componentInstance.5/@featureInstance.0" source="/0/@componentInstance.4/@featureInstance.14">
       <connectionReference context="/0" source="/0/@componentInstance.4/@featureInstance.14" destination="/0/@componentInstance.7/@featureInstance.6">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.26"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.25"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.7" source="/0/@componentInstance.7/@featureInstance.6" destination="/0/@componentInstance.7/@componentInstance.5/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.5"/>
@@ -1363,7 +1360,7 @@
     </connectionInstance>
     <connectionInstance name="Procesor_2.out_sterowanie_alarm -> Urzadz_Wykonawcze.dev_Brzeczyk.sterowanie" complete="true" kind="portConnection" destination="/0/@componentInstance.7/@componentInstance.6/@featureInstance.0" source="/0/@componentInstance.4/@featureInstance.15">
       <connectionReference context="/0" source="/0/@componentInstance.4/@featureInstance.15" destination="/0/@componentInstance.7/@featureInstance.7">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.27"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.26"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.7" source="/0/@componentInstance.7/@featureInstance.7" destination="/0/@componentInstance.7/@componentInstance.6/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.6"/>
@@ -1449,7 +1446,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.4"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.5/@featureInstance.1" destination="/0/@componentInstance.4/@featureInstance.0">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.4"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.3"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Panel_Interfejsu.proc_Przyciski.sygnal_Tryb_Nocny.wyjscie -> Procesor_1.in_tryb_nocny" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.1" source="/0/@componentInstance.5/@componentInstance.7/@componentInstance.1/@featureInstance.1">
@@ -1471,7 +1468,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.5"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.5/@featureInstance.2" destination="/0/@componentInstance.4/@featureInstance.1">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.5"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.4"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Panel_Interfejsu.proc_Przyciski.sygnal_Nakarm.wyjscie -> Procesor_1.in_nakarm" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.2" source="/0/@componentInstance.5/@componentInstance.7/@componentInstance.2/@featureInstance.1">
@@ -1493,18 +1490,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.6"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.5/@featureInstance.3" destination="/0/@componentInstance.4/@featureInstance.2">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.6"/>
-      </connectionReference>
-    </connectionInstance>
-    <connectionInstance name="Panel_Interfejsu.proc_Przyciski.sygnal_Alarm.wyjscie -> Procesor_1.in_alarm" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.3" source="/0/@componentInstance.5/@componentInstance.7/@componentInstance.3/@featureInstance.1">
-      <connectionReference context="/0/@componentInstance.5/@componentInstance.7" source="/0/@componentInstance.5/@componentInstance.7/@componentInstance.3/@featureInstance.1" destination="/0/@componentInstance.5/@componentInstance.7/@featureInstance.7">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPortConnection.7"/>
-      </connectionReference>
-      <connectionReference context="/0/@componentInstance.5" source="/0/@componentInstance.5/@componentInstance.7/@featureInstance.7" destination="/0/@componentInstance.5/@featureInstance.4">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.7"/>
-      </connectionReference>
-      <connectionReference context="/0" source="/0/@componentInstance.5/@featureInstance.4" destination="/0/@componentInstance.3/@featureInstance.3">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.3"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.5"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Panel_Interfejsu.proc_Przyciski.sygnal_Alarm.wyjscie -> Procesor_2.in_alarm" complete="true" kind="portConnection" destination="/0/@componentInstance.4/@featureInstance.3" source="/0/@componentInstance.5/@componentInstance.7/@componentInstance.3/@featureInstance.1">
@@ -1515,7 +1501,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.7"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.5/@featureInstance.4" destination="/0/@componentInstance.4/@featureInstance.3">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.7"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.6"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Zest_Czujnikow.czuj_Temp.dostep_do_magistrali -> Magistrala_2" complete="true" kind="accessConnection" destination="/0/@componentInstance.1" source="/0/@componentInstance.6/@componentInstance.0/@featureInstance.1">
@@ -1558,15 +1544,15 @@
         <connection xsi:type="aadl2:AccessConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedAccessConnection.1"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Temperatura.wyjscie -> Procesor_1.in_temperatura" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.4" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.0/@featureInstance.1">
+    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Temperatura.wyjscie -> Procesor_1.in_temperatura" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.3" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.0/@featureInstance.1">
       <connectionReference context="/0/@componentInstance.6/@componentInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.0/@featureInstance.1" destination="/0/@componentInstance.6/@componentInstance.5/@featureInstance.5">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.20/@ownedPortConnection.5"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@featureInstance.5" destination="/0/@componentInstance.6/@featureInstance.1">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.5"/>
       </connectionReference>
-      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.1" destination="/0/@componentInstance.3/@featureInstance.4">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.8"/>
+      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.1" destination="/0/@componentInstance.3/@featureInstance.3">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.7"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Temperatura.wyjscie -> Procesor_2.in_temperatura" complete="true" kind="portConnection" destination="/0/@componentInstance.4/@featureInstance.4" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.0/@featureInstance.1">
@@ -1577,18 +1563,18 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.5"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.1" destination="/0/@componentInstance.4/@featureInstance.4">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.13"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.12"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Poziom.wyjscie -> Procesor_1.in_poziom_wody" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.1/@featureInstance.1">
+    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Poziom.wyjscie -> Procesor_1.in_poziom_wody" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.4" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.1/@featureInstance.1">
       <connectionReference context="/0/@componentInstance.6/@componentInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.1/@featureInstance.1" destination="/0/@componentInstance.6/@componentInstance.5/@featureInstance.6">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.20/@ownedPortConnection.6"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@featureInstance.6" destination="/0/@componentInstance.6/@featureInstance.2">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.6"/>
       </connectionReference>
-      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.2" destination="/0/@componentInstance.3/@featureInstance.5">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.9"/>
+      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.2" destination="/0/@componentInstance.3/@featureInstance.4">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.8"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Poziom.wyjscie -> Procesor_2.in_poziom_wody" complete="true" kind="portConnection" destination="/0/@componentInstance.4/@featureInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.1/@featureInstance.1">
@@ -1599,18 +1585,18 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.6"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.2" destination="/0/@componentInstance.4/@featureInstance.5">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.14"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.13"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Tlen.wyjscie -> Procesor_1.in_tlen" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.2/@featureInstance.1">
+    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Tlen.wyjscie -> Procesor_1.in_tlen" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.2/@featureInstance.1">
       <connectionReference context="/0/@componentInstance.6/@componentInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.2/@featureInstance.1" destination="/0/@componentInstance.6/@componentInstance.5/@featureInstance.7">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.20/@ownedPortConnection.7"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@featureInstance.7" destination="/0/@componentInstance.6/@featureInstance.3">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.7"/>
       </connectionReference>
-      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.3" destination="/0/@componentInstance.3/@featureInstance.6">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.10"/>
+      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.3" destination="/0/@componentInstance.3/@featureInstance.5">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.9"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Tlen.wyjscie -> Procesor_2.in_tlen" complete="true" kind="portConnection" destination="/0/@componentInstance.4/@featureInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.2/@featureInstance.1">
@@ -1621,18 +1607,18 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.7"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.3" destination="/0/@componentInstance.4/@featureInstance.6">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.15"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.14"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Jasnosc.wyjscie -> Procesor_1.in_jasnosc" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.7" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.3/@featureInstance.1">
+    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Jasnosc.wyjscie -> Procesor_1.in_jasnosc" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.3/@featureInstance.1">
       <connectionReference context="/0/@componentInstance.6/@componentInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.3/@featureInstance.1" destination="/0/@componentInstance.6/@componentInstance.5/@featureInstance.8">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.20/@ownedPortConnection.8"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@featureInstance.8" destination="/0/@componentInstance.6/@featureInstance.4">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.8"/>
       </connectionReference>
-      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.4" destination="/0/@componentInstance.3/@featureInstance.7">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.11"/>
+      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.4" destination="/0/@componentInstance.3/@featureInstance.6">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.10"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_Jasnosc.wyjscie -> Procesor_2.in_jasnosc" complete="true" kind="portConnection" destination="/0/@componentInstance.4/@featureInstance.7" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.3/@featureInstance.1">
@@ -1643,18 +1629,18 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.8"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.4" destination="/0/@componentInstance.4/@featureInstance.7">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.16"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.15"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_pH.wyjscie -> Procesor_1.in_ph" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.8" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.4/@featureInstance.1">
+    <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_pH.wyjscie -> Procesor_1.in_ph" complete="true" kind="portConnection" destination="/0/@componentInstance.3/@featureInstance.7" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.4/@featureInstance.1">
       <connectionReference context="/0/@componentInstance.6/@componentInstance.5" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.4/@featureInstance.1" destination="/0/@componentInstance.6/@componentInstance.5/@featureInstance.9">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.20/@ownedPortConnection.9"/>
       </connectionReference>
       <connectionReference context="/0/@componentInstance.6" source="/0/@componentInstance.6/@componentInstance.5/@featureInstance.9" destination="/0/@componentInstance.6/@featureInstance.5">
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.9"/>
       </connectionReference>
-      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.5" destination="/0/@componentInstance.3/@featureInstance.8">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.12"/>
+      <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.5" destination="/0/@componentInstance.3/@featureInstance.7">
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.11"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Zest_Czujnikow.proc_Czujnikow.sygnal_pH.wyjscie -> Procesor_2.in_ph" complete="true" kind="portConnection" destination="/0/@componentInstance.4/@featureInstance.8" source="/0/@componentInstance.6/@componentInstance.5/@componentInstance.4/@featureInstance.1">
@@ -1665,7 +1651,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.22/@ownedPortConnection.9"/>
       </connectionReference>
       <connectionReference context="/0" source="/0/@componentInstance.6/@featureInstance.5" destination="/0/@componentInstance.4/@featureInstance.8">
-        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.17"/>
+        <connection xsi:type="aadl2:PortConnection" href="../Aquarium.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.16"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="Urzadz_Wykonawcze.dev_LED.dostep_do_magistrali -> Magistrala_2" complete="true" kind="accessConnection" destination="/0/@componentInstance.1" source="/0/@componentInstance.7/@componentInstance.0/@featureInstance.1">

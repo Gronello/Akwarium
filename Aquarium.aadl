@@ -1,23 +1,19 @@
 package Aquarium
 public
 
-  -- Definicja podstawowego typu danych do przesyłania sygnałów między komponentami
+  -- Definicja Sygnału, Magistrali i RAMu
   data Sygnal
   end Sygnal;
 
-  -- Magistrala danych służąca do komunikacji między wszystkimi urządzeniami i procesorami
   bus Magistrala_Danych
   end Magistrala_Danych;
 
-  -- Pamięć RAM do przechowywania odczytów z czujników
   memory Pamiec_RAM
   features
     bus_access: requires bus access Magistrala_Danych;
   end Pamiec_RAM;
 
 --========== PROCESORY ==========--
--- Procesory zarządzają logiką sterowania i przetwarzają sygnały wejściowe/wyjściowe
-
   -- Procesor 1: Przetwarza sygnały z panelu UI i wysyła dane do wyświetlaczy
   processor Procesor_Glowny_Panel
     features
@@ -25,7 +21,7 @@ public
       in_tryb_dzienny: in data port Sygnal;
       in_tryb_nocny: in data port Sygnal;
       in_nakarm: in data port Sygnal;
-      in_alarm: in data port Sygnal;
+--      in_alarm: in data port Sygnal;
       
       -- Wejścia: dane z czujników do wyświetlenia
       in_temperatura: in data port Sygnal;
@@ -464,7 +460,7 @@ public
       c_tryb_dz_p1: port Panel_Interfejsu.out_Tryb_Dzienny -> Procesor_1.in_tryb_dzienny;
       c_tryb_no_p1: port Panel_Interfejsu.out_Tryb_Nocny -> Procesor_1.in_tryb_nocny;
       c_nakarm_p1: port Panel_Interfejsu.out_Nakarm -> Procesor_1.in_nakarm;
-      c_alarm_p1: port Panel_Interfejsu.out_Alarm -> Procesor_1.in_alarm;
+--      c_alarm_p1: port Panel_Interfejsu.out_Alarm -> Procesor_1.in_alarm;
 
       c_tryb_dz_p2: port Panel_Interfejsu.out_Tryb_Dzienny -> Procesor_2.in_tryb_dzienny;
       c_tryb_no_p2: port Panel_Interfejsu.out_Tryb_Nocny -> Procesor_2.in_tryb_nocny;

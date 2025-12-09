@@ -14,24 +14,24 @@ Projekt przedstawia architekturę systemu automatycznego zarządzania akwarium, 
 
 ## 2.  Opis i Założenia Modelowanego Systemu
 
-System realizuje zarządzanie środowiskiem akwarium, automatycznie reagując na odczyty z czujników oraz polecenia użytkownika. Architektura opiera się na separacji logiki sterowania interfejsem od logiki sterowania urządzeniami.
+System realizuje zarządzanie środowiskiem akwarium, automatycznie reagując na odczyty z czujników oraz polecenia użytkownika.
 
 ### 2.1. Podsystemy Funkcjonalne
 
 | Podsystem | Rola |
 | :--- | :--- |
-| **Panel\_UI** (Interfejs użytkownika) | Przyjmowanie poleceń (tryby, karmienie, alarm) i wyświetlanie stanu/danych. |
+| **Panel\_UI** (Interfejs użytkownika) | Przyjmowanie poleceń (tryby, karmienie) i wyświetlanie stanu/danych. |
 | **Zestaw\_Czujnikow** | Monitorowanie parametrów: temperatura, poziom wody, tlen, jasność, pH. |
-| **Urzadzenia\_Wykonawcze** | Sterowanie fizycznymi elementami: oświetlenie (dzienne/nocne), grzałka, pompa, CO₂, karmnik, alarm. |
+| **Urzadzenia\_Wykonawcze** | Sterowanie fizycznymi elementami: oświetlenie dzienne i nocne, grzałka, pompa, CO2, karmnik, alarm. |
 
 ### 2.2. Architektura Procesorów
 
-System działa na dwóch wyspecjalizowanych procesorach, komunikujących się za pomocą magistrali `Magistrala_Danych`:
+System działa na dwóch procesorach:
 
 * **`Procesor_Glowny_Panel`**: Odpowiada za obsługę interfejsu użytkownika i wyświetlanie danych.
-* **`Procesor_Glowny_Urzadzenia`**: Odpowiada za logikę sterowania urządzeniami na podstawie danych z czujników.
+* **`Procesor_Glowny_Urzadzenia`**: Odpowiada za logikę sterowania urządzeniami na podstawie danych z czujników i danych wejściowych z panelu HMI.
 
-### 2.3. Właściwości Czasu Rzeczywistego (Wątki)
+### 2.3. Wątki
 
 Cała logika przetwarzania sygnałów i danych opiera się na jednolitym wątku **`Watek_Sygnalu`**, zdefiniowanej parametrami:
 
@@ -42,8 +42,8 @@ Cała logika przetwarzania sygnałów i danych opiera się na jednolitym wątku 
 
 ### 2.4. Kluczowe Założenia Projektowe
 
-* **Izolacja Logiki:** Oddzielenie procesorów (Panel/Urządzenia) zwiększa **odporność na błędy**. W przypadku awarii Panelu, logika sterowania urządzeniami może działać autonomicznie.
-* **Komunikacja:** Magistrala danych jest modelowana idealnie (brak opóźnień i ograniczeń przepustowości).
+* **Izolacja Logiki:** Oddzielenie procesorów (Panel/Urządzenia). W przypadku awarii Panelu, logika sterowania urządzeniami może działać autonomicznie.
+* **Komunikacja:** Magistrale danych jest modelowana idealnie (brak opóźnień i ograniczeń przepustowości).
 * **Dane:** Sygnały są abstrakcyjne i nie mają modelowanych wartości liczbowych.
 
 ---
@@ -55,7 +55,7 @@ Cała logika przetwarzania sygnałów i danych opiera się na jednolitym wątku 
 | Typ | Komponenty |
 | :--- | :--- |
 | **`processor`** | `Procesor_Glowny_Panel`, `Procesor_Glowny_Urzadzenia` |
-| **`bus`** | `Magistrala_Danych` |
+| **`bus`** | `Magistrala_1` , `Magistrala_2`|
 
 ### 3.2. Komponenty Oprogramowania (Software)
 
@@ -97,11 +97,11 @@ Komponent reprezentujący zasoby pamięciowe w systemie.
 
 ### Magistrala (`bus`)
 Medium transmisyjne łączące komponenty.
-* `Magistrala_Danych`: Modeluje połączenia komunikacyjne. W systemie wykorzystano dwie instancje: `Magistrala_1` (łącząca Panel i Procesor 1) oraz `Magistrala_2` (łącząca Czujniki, Urządzenia, Pamięć i Procesor 2).
+* `Magistrala_1`: Modeluje połączenia komunikacyjne. W systemie wykorzystano dwie instancje: `Magistrala_1` (łącząca Panel i Procesor 1) oraz `Magistrala_2` (łącząca Czujniki, Urządzenia, Pamięć i Procesor 2).
 
 ### Urządzenie (`device`)
 Komponenty fizyczne niezbędne do funkcjonowania akwarium. Podzielono je na trzy kategorie:
-* **Wejścia (Interfejs):** Urządzenia, przez które użytkownik wydaje polecenia: `Przycisk_Trybu`, `Przycisk_Karmienia`, `Przycisk_Alarm`.
+* **Wejścia (Interfejs):** Urządzenia, przez które użytkownik wydaje polecenia: `Przycisk_Trybu`, `Przycisk_Karmienia`.
 * **Czujniki:** Urządzenia dostarczające danych środowiskowych: `Czujnik_Temperatury`, `Czujnik_Poziomu_Wody`, `Czujnik_Tlenu`, `Czujnik_Jasnosci`, `Czujnik_pH`.
 * **Wyjścia/Elementy wykonawcze:** Urządzenia realizujące pracę lub prezentujące dane: `Wyswietlacz`, `Oswietlenie_LED` (dzienne), `Oswietlenie_LED_Nocne`, `Grzalka`, `Pompa_Obiegowa`, `Zbiornik_CO2`, `Karmnik_Automatyczny`, `Brzeczyk_Alarmowy`.
 

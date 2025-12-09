@@ -239,7 +239,7 @@ public
       dostep_do_magistrali: requires bus access Magistrala_Danych;
   end Czujnik_Jasnosci;
 
-  -- Czujnik pH wody (kwasowość/zasadowość)
+  -- Czujnik pH
   device Czujnik_pH
     features
       odczyt: out data port Sygnal;  -- Aktualne pH (skala 0-14)
@@ -264,7 +264,7 @@ public
       out_ph: out data port Sygnal;
   end Proces_Czujnikow;
 
-  -- Implementacja: 5 wątków przetwarzających dane z czujników
+  -- Implementacja: przetwarzanie danych z czujników
   process implementation Proces_Czujnikow.impl
     subcomponents
       sygnal_Temperatura: thread Watek_Sygnalu;
@@ -334,7 +334,7 @@ public
   end Zestaw_Czujnikow.impl;
 
 --========== PODSYSTEM 3 - URZĄDZENIA WYKONAWCZE ==========--
--- Fizyczne urządzenia wykonujące ostateczne działania
+-- Fizyczne urządzenia wykonujące działania
 
   -- Urządzenie wykonawcze: Oświetlenie LED główne (dzienne)
   device Oswietlenie_LED
@@ -439,24 +439,24 @@ public
   -- Pełna implementacja systemu
   system implementation Smart_Aquarium.impl
     subcomponents
-      -- 3 podsystemy funkcjonalne
+      -- podsystemy funkcjonalne
       Panel_Interfejsu: system Panel_UI.impl;  -- Zintegrowany interfejs użytkownika
       Zest_Czujnikow: system Zestaw_Czujnikow.impl;  -- Monitorowanie parametrów
       Urzadz_Wykonawcze: system Urzadzenia_Wykonawcze.impl;  -- Wykonanie działań
 
-      -- 2 magistrale komunikacyjne
+      -- magistrale komunikacyjne
       Magistrala_1: bus Magistrala_Danych;  -- Dla panelu i procesora 1
       Magistrala_2: bus Magistrala_Danych;  -- Dla czujników, urządzeń i procesora 2
       
-      -- Pamięć RAM do zapisywania odczytów z czujników
+      -- Pamięć RAM
       RAM: memory Pamiec_RAM;
       
-      -- 2 procesory sterujące
+      -- procesory sterujące
       Procesor_1: processor Procesor_Glowny_Panel;  -- Obsługa panelu i wyświetlaczy
       Procesor_2: processor Procesor_Glowny_Urzadzenia;  -- Analiza czujników i sterowanie urządzeniami
 
     connections
-      -- FAZA 1: Panel UI -> Procesory (wybór trybu pracy i przycisków)
+      -- Panel UI -> Procesory (wybór trybu pracy i przycisków)
       c_tryb_dz_p1: port Panel_Interfejsu.out_Tryb_Dzienny -> Procesor_1.in_tryb_dzienny;
       c_tryb_no_p1: port Panel_Interfejsu.out_Tryb_Nocny -> Procesor_1.in_tryb_nocny;
       c_nakarm_p1: port Panel_Interfejsu.out_Nakarm -> Procesor_1.in_nakarm;
@@ -467,7 +467,7 @@ public
       c_nakarm_p2: port Panel_Interfejsu.out_Nakarm -> Procesor_2.in_nakarm;
       c_alarm_p2: port Panel_Interfejsu.out_Alarm -> Procesor_2.in_alarm;
       
-      -- FAZA 2: Zestaw Czujników -> Procesory (monitoring parametrów)
+      -- Zestaw Czujników -> Procesory (monitoring parametrów)
       c_sens_temp_p1: port Zest_Czujnikow.out_temperatura -> Procesor_1.in_temperatura;
       c_sens_poz_p1: port Zest_Czujnikow.out_poziom_wody -> Procesor_1.in_poziom_wody;
       c_sens_tlen_p1: port Zest_Czujnikow.out_tlen -> Procesor_1.in_tlen;
@@ -480,12 +480,12 @@ public
       c_sens_jasn_p2: port Zest_Czujnikow.out_jasnosc -> Procesor_2.in_jasnosc;
       c_sens_ph_p2: port Zest_Czujnikow.out_ph -> Procesor_2.in_ph;
       
-      -- FAZA 3: Procesor 1 -> Panel UI (feedback dla użytkownika)
+      -- Procesor 1 -> Panel UI (feedback dla użytkownika)
       c_info_tryb: port Procesor_1.out_aktualny_tryb -> Panel_Interfejsu.in_aktualny_tryb;
       c_info_status: port Procesor_1.out_status -> Panel_Interfejsu.in_status_systemu;
       c_info_czujniki: port Procesor_1.out_wartosci_czujnikow -> Panel_Interfejsu.in_wartosci_czujnikow;
 
-      -- FAZA 4: Procesor 2 -> Urządzenia Wykonawcze (sterowanie na podstawie trybu i czujników)
+      -- Procesor 2 -> Urządzenia Wykonawcze (sterowanie na podstawie trybu i czujników)
       c_wyk_led: port Procesor_2.out_sterowanie_led -> Urzadz_Wykonawcze.in_led;
       c_wyk_led_nocne: port Procesor_2.out_sterowanie_led_nocne -> Urzadz_Wykonawcze.in_led_nocne;
       c_wyk_grzalka: port Procesor_2.out_sterowanie_grzalka -> Urzadz_Wykonawcze.in_grzalka;

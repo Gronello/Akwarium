@@ -145,6 +145,16 @@ Przykładowy obraz podsystemu, do odważnych świat należy czy coś
 
 ## 6.  Testy funkcjonalne
 
+**Poniżej przedstawiono wyniki dwóch analiz,**
+
+Binding Constraints, sprawdzająca czy wszystko jest ze sobą poprawnie połączone 
+![Binding Constraints ](bindingConstraints.png)
+
+Thread Binding sprawdzające czy wątki są odpowienio przypisane do procesów
+![Thread Binding ](threadBinding.png)
+
+Wszystkie testy odbyły się pomyślnie, połączenia są dobrze zrobione, a wątki nie są nazbyt obciążone
+
 --
 
 ## 7.  Dodatkowe Informacje

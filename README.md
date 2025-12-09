@@ -131,8 +131,7 @@ Ogólny obraz systemu
 
 ### Diagram wnętrza podsystemu
 
-Przykładowy obraz podsystemu, do odważnych świat należy czy coś
-
+Przykładowy wewnętrzny obraz podsystemu
 ![Diagram Podsystemu](PrzykladowySystem.png)
 
 ### Diagramy opisujące flow informacji

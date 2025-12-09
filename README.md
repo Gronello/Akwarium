@@ -87,7 +87,7 @@ Najwyższy poziom hierarchii. Reprezentuje całe akwarium oraz jego główne pod
 * `Urzadzenia_Wykonawcze`: Podsystem grupujący wszystkie elementy fizyczne realizujące akcje w akwarium.
 
 ### Procesor (`processor`)
-Modeluje jednostki obliczeniowe wykonujące kod sterujący.
+Modeluje jednostki obliczeniowe wykonujące kod sterujący, na każdy procesor przypada 1 proces.
 * `Procesor_Glowny_Panel`: Odpowiada za przetwarzanie sygnałów z panelu UI oraz wysyłanie danych do wyświetlaczy.
 * `Procesor_Glowny_Urzadzenia`: Odpowiada za logikę automatyki – analizuje dane z czujników i na ich podstawie steruje urządzeniami wykonawczymi.
 
@@ -118,6 +118,22 @@ Najmniejsza jednostka wykonawcza, realizująca konkretne zadania w czasie rzeczy
     * `Period => 100 ms` (Częstotliwość odświeżania 10Hz)
     * `Compute_Execution_Time => 2 ms .. 5 ms` (Czas zajętości procesora)
     * `Deadline => 100 ms` (Wymagany czas zakończenia zadania przed kolejnym cyklem)
+      
+### System tworzy łącznie 9 aktywnych wątków bazujących na powyższej definicji, podzielonych na dwa procesy:**
+  
+   * Wewnątrz procesu Panel_Sterowania.impl. Odpowiadają za obsługę sygnałów z panelu użytkownika:
+* `sygnal_Tryb_Dzienny` – obsługuje przycisk trybu dziennego.
+* `sygnal_Tryb_Nocny` – obsługuje przycisk trybu nocnego.
+* `sygnal_Nakarm` – obsługuje przycisk karmienia.
+* `sygnal_Alarm` – obsługuje przycisk alarmu.
+
+   * Wewnątrz procesu Proces_Czujnikow.impl. Odpowiadają za przetwarzanie danych z sensorów:
+* `sygnal_Temperatura` – przetwarza odczyt temperatury.
+* `sygnal_Poziom` – przetwarza odczyt poziomu wody.
+* `sygnal_Tlen` – przetwarza odczyt natlenienia.
+* `sygnal_Jasnosc` – przetwarza odczyt jasności.
+* `sygnal_pH` – przetwarza odczyt pH wody.
+
 ---
 # 5. Model - rysunek
 
